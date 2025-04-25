@@ -192,7 +192,7 @@
 <body>
   <div class="overlay">
     <header>
-      <div class="logo">木工場ファミリー</div>
+      <div class="logo" id="logo-text">木工場ファミリー</div>
       <nav>
         <!-- Dropdown ngôn ngữ nằm ở vị trí đầu menu -->
         <div class="lang-dropdown">
@@ -201,11 +201,11 @@
             <option value="vn">Tiếng Việt</option>
           </select>
         </div>
-        <ul>
-          <li><a href="#">ホーム</a></li>
-          <li><a href="#">会社概要</a></li>
-          <li><a href="#">製品紹介</a></li>
-          <li><a href="#">お問い合わせ</a></li>
+        <ul id="menu-list">
+          <li><a href="#" data-key="home">ホーム</a></li>
+          <li><a href="#" data-key="about">会社概要</a></li>
+          <li><a href="#" data-key="products">製品紹介</a></li>
+          <li><a href="#" data-key="contact">お問い合わせ</a></li>
         </ul>
       </nav>
     </header>
@@ -276,7 +276,7 @@
           <img src="https://img.icons8.com/ios-filled/24/000000/instagram-new.png" alt="Instagram" />
         </a>
       </div>
-      <p>© 2025 木工場ファミリー All Rights Reserved.</p>
+      <p id="footer-copyright">© 2025 木工場ファミリー All Rights Reserved.</p>
     </footer>
 
   </div>
@@ -296,6 +296,24 @@
       `
     };
 
+    // Logo text ngôn ngữ
+    const logoText = {
+      jp: "木工場ファミリー",
+      vn: "Gia Đình Xưởng Gỗ"
+    };
+
+    // Menu language
+    const menuText = {
+      jp: ["ホーム", "会社概要", "製品紹介", "お問い合わせ"],
+      vn: ["Trang Chủ", "Giới Thiệu", "Sản Phẩm", "Liên Hệ"]
+    };
+
+    // Footer copyright
+    const copyrightText = {
+      jp: "© 2025 木工場ファミリー All Rights Reserved.",
+      vn: "© 2025 Gia Đình Xưởng Gỗ Bản Quyền Đã Được Bảo Lưu."
+    };
+
     function changeLang(lang) {
       // Ẩn/hiện nội dung chính
       if(lang === 'jp') {
@@ -308,6 +326,18 @@
 
       // Thay đổi nội dung thông tin liên hệ ở footer
       document.getElementById('contactInfo').innerHTML = contactContent[lang];
+
+      // Thay đổi logo text
+      document.getElementById('logo-text').textContent = logoText[lang];
+
+      // Thay đổi menu text
+      const menuItems = document.querySelectorAll('#menu-list li a');
+      menuItems.forEach((item, index) => {
+        item.textContent = menuText[lang][index];
+      });
+
+      // Thay đổi footer copyright
+      document.getElementById('footer-copyright').textContent = copyrightText[lang];
     }
 
     // Mặc định chọn ngôn ngữ Nhật khi tải trang
