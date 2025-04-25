@@ -110,4 +110,62 @@
 <!-- Nội dung tiếng Nhật -->
 <div id="jp" class="lang-content active">
   <h1>日本品質 - ベトナムの木の伝統</h1>
-  <p>私たちの木工場は10年以上にわ
+  <p>私たちの木工場は10年以上にわたり、日本および国際市場向けに高品質な木製品を製造しています。</p>
+  <h2>注目の商品</h2>
+  <div class="products">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="製品1" />
+      <h3>ナチュラルウッドチェア</h3>
+      <p>使いやすいデザイン、最高品質のオーク材を使用。</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="製品2" />
+      <h3>日本風ダイニングテーブル</h3>
+      <p>丈夫で美しい、日本スタイルのテーブル。</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="製品3" />
+      <h3>多機能収納キャビネット</h3>
+      <p>たくさんの収納スペースを持つ便利なキャビネット。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Nội dung tiếng Việt -->
+<div id="vn" class="lang-content">
+  <h1>Chất lượng Nhật - Tinh hoa gỗ Việt</h1>
+  <p>Xưởng gỗ gia đình với hơn 10 năm kinh nghiệm trong gia công đồ gỗ chất lượng cao phục vụ thị trường Nhật Bản và quốc tế.</p>
+  <h2>Sản phẩm nổi bật</h2>
+  <div class="products">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
+      <h3>Ghế gỗ tự nhiên</h3>
+      <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
+      <h3>Bàn ăn phong cách Nhật</h3>
+      <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
+      <h3>Tủ đựng đồ đa năng</h3>
+      <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function changeLang(lang) {
+    if(lang === 'jp') {
+      document.getElementById('jp').classList.add('active');
+      document.getElementById('vn').classList.remove('active');
+    } else if(lang === 'vn') {
+      document.getElementById('vn').classList.add('active');
+      document.getElementById('jp').classList.remove('active');
+    }
+  }
+</script>
+
+</body>
+</html>
