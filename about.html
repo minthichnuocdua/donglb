@@ -1,183 +1,171 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>会社概要 - Giới Thiệu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      color: #3e3e3e;
-      padding-bottom: 100px;
-    }
-    .overlay {
-      background-color: rgba(250, 249, 246, 0.85);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      background-color: rgba(125, 90, 54, 0.9);
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: white;
-    }
-    .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0; padding: 0;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    nav ul li a:hover {
-      color: #d1b594;
-    }
-    .lang-dropdown select {
-      background-color: #7d5a36;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 5px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .lang-dropdown select:hover {
-      background-color: #5a3f22;
-    }
-    main {
-      flex-grow: 1;
-      max-width: 1100px;
-      margin: 40px auto 0;
-      padding: 0 15px 40px; /* đệm dưới cho footer */
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    }
-    h1, h2 {
-      color: #7d5a36;
-    }
-    p {
-      line-height: 1.5;
-      margin-bottom: 1em;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
-    .products-grid {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .product-card {
-      flex: 1 1 250px;
-      background: #faf7f1;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
-      padding: 15px;
-      text-align: center;
-    }
-    .product-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .product-card h3 {
-      margin: 10px 0 6px;
-      color: #5e432f;
-    }
-    .leader {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      flex-wrap: wrap;
-      background: #faf7f1;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
-    }
-    .leader img {
-      border-radius: 50%;
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .leader-info {
-      flex: 1;
-      min-width: 200px;
-    }
-    footer.contact-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(125, 90, 54, 0.9);
-      color: white;
-      text-align: center;
-      padding: 10px 15px 15px;
-      font-size: 12px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    footer.contact-footer .contact-info div {
-      margin: 2px 0;
-    }
-    footer.contact-footer .social-icons {
-      margin-top: 6px;
-    }
-    footer.contact-footer a {
-      margin: 0 8px;
-      display: inline-block;
-      color: #d1b594;
-      text-decoration: none;
-      font-weight: 600;
-      vertical-align: middle;
-    }
-    footer.contact-footer a:hover {
-      text-decoration: underline;
-    }
-    footer.contact-footer a img {
-      filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
-      width: 22px;
-      height: 22px;
-    }
-    @media(max-width: 720px) {
-      .leader {
-        flex-direction: column;
-        text-align: center;
-      }
-      .leader img {
-        margin: 0 auto 15px;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>会社概要 - Giới Thiệu</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #3e3e3e;
+    padding-bottom: 100px;
+  }
+  .overlay {
+    background-color: rgba(250, 249, 246, 0.85);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background-color: rgba(125, 90, 54, 0.9);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+  }
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0; padding: 0;
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  nav ul li a:hover {
+    color: #d1b594;
+  }
+  .lang-dropdown select {
+    background-color: #7d5a36;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .lang-dropdown select:hover {
+    background-color: #5a3f22;
+  }
+  main {
+    flex-grow: 1;
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  h1, h2 {
+    color: #7d5a36;
+    text-align: center;
+  }
+  p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+    text-align: justify;
+  }
+  .products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .product-card {
+    background: #faf7f1;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+  }
+  .product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .product-card h3 {
+    margin: 10px 0 6px;
+    color: #5e432f;
+  }
+  .leader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: #faf7f1;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .leader img {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+  }
+  footer.contact-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(125, 90, 54, 0.9);
+    color: white;
+    text-align: center;
+    padding: 10px 15px 15px;
+    font-size: 12px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer.contact-footer .contact-info div {
+    margin: 2px 0;
+  }
+  footer.contact-footer .social-icons {
+    margin-top: 6px;
+  }
+  footer.contact-footer a {
+    margin: 0 8px;
+    display: inline-block;
+    color: #d1b594;
+    text-decoration: none;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  footer.contact-footer a:hover {
+    text-decoration: underline;
+  }
+  footer.contact-footer a img {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
+    width: 22px;
+    height: 22px;
+  }
+</style>
 </head>
 <body>
   <div class="overlay">
@@ -202,55 +190,99 @@
     </header>
 
     <main>
-      <h1 id="page-title">会社概要 (Giới Thiệu)</h1>
+      <div id="jp" class="lang-content active">
+        <h1>会社概要</h1>
 
-      <section class="section" id="factory-info">
-        <h2>工場概要 / Cơ sở sản xuất</h2>
-        <p>Đồ gỗ MiDo là một cơ sở sản xuất đồ gỗ uy tín với hơn 10 năm kinh nghiệm, chuyên sản xuất các sản phẩm nội thất gỗ chất lượng cao phục vụ thị trường Nhật Bản và quốc tế.</p>
-        <p>Chúng tôi sở hữu đội ngũ thợ lành nghề, trang thiết bị hiện đại và quy trình sản xuất nghiêm ngặt để đảm bảo từng sản phẩm đạt chuẩn cao nhất.</p>
-      </section>
+        <section class="section" id="factory-info">
+          <h2>工場概要</h2>
+          <p>Đồ gỗ MiDoは10年以上の実績を持つ信頼の木工所で、日本と国際市場に高品質な木製家具を提供しています。</p>
+          <p>熟練した職人、最新設備、厳格な製造過程により、最高基準の製品をお届けします。</p>
+        </section>
 
-      <section class="section" id="capabilities">
-        <h2>機能と製品 / Khả năng và sản phẩm</h2>
-        <p>Chúng tôi cung cấp các sản phẩm sau:</p>
-        <div class="products-grid">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Ghế gỗ tự nhiên" />
-            <h3>Ghế gỗ tự nhiên</h3>
-            <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+        <section class="section" id="capabilities">
+          <h2>機能と製品</h2>
+          <p>提供する製品は以下の通りです：</p>
+          <div class="products-grid">
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="ナチュラルウッドチェア" />
+              <h3>ナチュラルウッドチェア</h3>
+              <p>使いやすく、高品質のオーク材を使用しています。</p>
+            </div>
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="ダイニングテーブル" />
+              <h3>日本風ダイニングテーブル</h3>
+              <p>丈夫で美しい日本スタイルのテーブル。</p>
+            </div>
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="多機能収納キャビネット" />
+              <h3>多機能収納キャビネット</h3>
+              <p>多くの収納スペースを提供する便利なキャビネット。</p>
+            </div>
           </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Bàn ăn phong cách Nhật" />
-            <h3>Bàn ăn phong cách Nhật</h3>
-            <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
-          </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Tủ đựng đồ đa năng" />
-            <h3>Tủ đựng đồ đa năng</h3>
-            <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section" id="leader-info">
-        <h2>代表者紹介 / Người đại diện</h2>
-        <div class="leader">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Người đại diện" />
-          <div class="leader-info">
-            <h3>Nguyễn Văn A</h3>
-            <p>Người sáng lập và quản lý xưởng gỗ MiDo, với hơn 15 năm kinh nghiệm trong ngành sản xuất đồ gỗ cao cấp.</p>
-            <p>Ông Nguyễn Văn A có kiến thức sâu rộng về các vật liệu gỗ tự nhiên, kỹ thuật chế tác truyền thống kết hợp công nghệ hiện đại.</p>
-            <p>Cam kết mang đến sản phẩm hài lòng và dịch vụ tận tâm nhất cho khách hàng.</p>
+        <section class="section" id="leader-info">
+          <h2>代表者紹介</h2>
+          <div class="leader">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="代表者" />
+            <div class="leader-info">
+              <h3>グエン・バン・A</h3>
+              <p>MiDoの創設者であり、15年以上の木工製造経験を持つ管理者です。</p>
+              <p>天然木材の深い知識と伝統技術と最新技術の融合を特徴としています。</p>
+              <p>お客様満足と丁寧なサービスを約束します。</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
+      <div id="vn" class="lang-content" style="display:none;">
+        <h1>Giới Thiệu</h1>
+
+        <section class="section" id="factory-info">
+          <h2>Cơ sở sản xuất</h2>
+          <p>Đồ gỗ MiDo là một cơ sở sản xuất đồ gỗ uy tín với hơn 10 năm kinh nghiệm, chuyên sản xuất các sản phẩm nội thất gỗ chất lượng cao phục vụ thị trường Nhật Bản và quốc tế.</p>
+          <p>Chúng tôi sở hữu đội ngũ thợ lành nghề, trang thiết bị hiện đại và quy trình sản xuất nghiêm ngặt để đảm bảo từng sản phẩm đạt chuẩn cao nhất.</p>
+        </section>
+
+        <section class="section" id="capabilities">
+          <h2>Khả năng và sản phẩm</h2>
+          <p>Chúng tôi cung cấp các sản phẩm sau:</p>
+          <div class="products-grid">
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Ghế gỗ tự nhiên" />
+              <h3>Ghế gỗ tự nhiên</h3>
+              <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+            </div>
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Bàn ăn phong cách Nhật" />
+              <h3>Bàn ăn phong cách Nhật</h3>
+              <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
+            </div>
+            <div class="product-card">
+              <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Tủ đựng đồ đa năng" />
+              <h3>Tủ đựng đồ đa năng</h3>
+              <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="leader-info">
+          <h2>Người đại diện</h2>
+          <div class="leader">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Người đại diện" />
+            <div class="leader-info">
+              <h3>Nguyễn Văn A</h3>
+              <p>Người sáng lập và quản lý xưởng gỗ MiDo, với hơn 15 năm kinh nghiệm trong ngành sản xuất đồ gỗ cao cấp.</p>
+              <p>Ông Nguyễn Văn A có kiến thức sâu rộng về các vật liệu gỗ tự nhiên, kỹ thuật chế tác truyền thống kết hợp công nghệ hiện đại.</p>
+              <p>Cam kết mang đến sản phẩm hài lòng và dịch vụ tận tâm nhất cho khách hàng.</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="contact-footer" aria-label="Liên hệ / Contact information">
-      <div class="contact-info" id="contactInfo">
-        <!-- Nội dung contact bên dưới sẽ do script xử lý -->
-      </div>
+      <div class="contact-info" id="contactInfo"></div>
       <div class="social-icons">
         <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
           <img src="https://img.icons8.com/ios-filled/24/000000/facebook-new.png" alt="Facebook" />
@@ -297,11 +329,11 @@
 
     function changeLang(lang) {
       if(lang === 'jp') {
-        document.getElementById('jp')?.classList.add('active');
-        document.getElementById('vn')?.classList.remove('active');
+        document.getElementById('jp').classList.add('active');
+        document.getElementById('vn').classList.remove('active');
       } else {
-        document.getElementById('vn')?.classList.add('active');
-        document.getElementById('jp')?.classList.remove('active');
+        document.getElementById('vn').classList.add('active');
+        document.getElementById('jp').classList.remove('active');
       }
       document.getElementById('contactInfo').innerHTML = contactContent[lang];
       document.getElementById('logo-link').textContent = logoText[lang];
