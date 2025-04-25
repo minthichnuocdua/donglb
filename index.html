@@ -16,21 +16,26 @@
     background-position: center;
     background-attachment: fixed;
     color: #3e3e3e;
+    padding-bottom: 100px; /* đệm để không bị footer fixed che nội dung */
   }
-.social-icons {
-  margin-top: 8px;
-}
+  
+  .social-icons {
+    margin-top: 8px;
+  }
 
-.social-icons a {
-  margin-right: 12px;
-  display: inline-block;
-}
+  .social-icons a {
+    margin-right: 12px;
+    display: inline-block;
+  }
 
-.social-icons img {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-}
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
+    /* Chỉnh màu icon thành màu chủ đạo (nâu sáng) */
+  }
+
   /* Lớp nền phủ tông sáng, bán trong suốt */
   .overlay {
     background-color: rgba(250, 249, 246, 0.85);
@@ -38,6 +43,7 @@
     display: flex;
     flex-direction: column;
   }
+
   /* Header */
   header {
     background-color: rgba(125, 90, 54, 0.9);
@@ -47,30 +53,36 @@
     justify-content: space-between;
     color: white;
   }
+
   .logo {
     font-weight: bold;
     font-size: 1.5rem;
   }
+
   /* Menu */
   nav {
     display: flex;
     align-items: center;
     gap: 30px;
   }
+
   nav ul {
     list-style: none;
     display: flex;
     gap: 25px;
     margin: 0; padding: 0;
   }
+
   nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: 600;
   }
+
   nav ul li a:hover {
     color: #d1b594;
   }
+
   /* Dropdown chọn ngôn ngữ */
   .lang-dropdown select {
     background-color: #7d5a36;
@@ -81,6 +93,7 @@
     font-weight: 600;
     cursor: pointer;
   }
+
   .lang-dropdown select:hover {
     background-color: #5a3f22;
   }
@@ -89,23 +102,28 @@
   main {
     flex-grow: 1;
     max-width: 1100px;
-    margin: 40px auto 60px;
+    margin: 40px auto 0;
     padding: 0 15px;
   }
+
   .lang-content {
     display: none;
   }
+
   .lang-content.active {
     display: block;
   }
+
   h1, h2 {
     color: #7d5a36;
   }
+
   .products {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
   }
+
   .product-card {
     background: white;
     border-radius: 10px;
@@ -113,37 +131,61 @@
     padding: 10px;
     flex: 1 1 250px;
   }
+
   .product-card img {
     width: 100%;
     height: 150px;
     object-fit: cover;
     border-radius: 8px;
   }
+
   .product-card h3 {
     margin: 10px 0 6px;
   }
 
-  /* Footer */
-  footer {
+  /* Footer cố định dưới cùng */
+  footer.contact-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: rgba(125, 90, 54, 0.9);
     color: white;
     text-align: center;
-    padding: 20px 10px 40px;
-    margin-top: auto;
+    padding: 10px 15px 15px;
+    font-size: 12px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  footer a {
+
+  footer.contact-footer .contact-info div {
+    margin: 2px 0;
+  }
+
+  footer.contact-footer .social-icons {
+    margin-top: 6px;
+  }
+
+  footer.contact-footer a {
+    margin: 0 8px;
+    display: inline-block;
     color: #d1b594;
-    margin: 0 10px;
     text-decoration: none;
     font-weight: 600;
+    vertical-align: middle;
   }
-  footer a:hover {
+
+  footer.contact-footer a:hover {
     text-decoration: underline;
   }
 
-  /* Phần liên hệ trong footer */
-  .contact-info {
-    margin-bottom: 15px;
+  footer.contact-footer a img {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
+    width: 22px;
+    height: 22px;
   }
 </style>
 </head>
@@ -191,24 +233,7 @@
             <p>たくさんの収納スペースを持つ便利なキャビネット。</p>
           </div>
         </div>
-
-        <h2>連絡先</h2>
-<div class="contact-info">
-  <div>住所: ベトナム モク区 木通り123番地</div>
-  <div>住所：abc通り、ハノイ市</div>
-  <div>電話: 0909 123 456</div>
-  <div class="social-icons">
-    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="https://img.icons8.com/ios-filled/24/000000/facebook-new.png" alt="Facebook" />
-    </a>
-    <a href="https://line.me/en/" target="_blank" rel="noopener" aria-label="Line">
-      <img src="https://img.icons8.com/ios-filled/24/000000/line-me.png" alt="Line" />
-    </a>
-    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="https://img.icons8.com/ios-filled/24/000000/instagram-new.png" alt="Instagram" />
-    </a>
-  </div>
-</div>
+      </div>
 
       <!-- Nội dung Tiếng Việt -->
       <div id="vn" class="lang-content">
@@ -232,33 +257,47 @@
             <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
           </div>
         </div>
-
-        <h2>Liên hệ</h2>
-<div class="contact-info">
-  <div>Địa chỉ: 123 Đường Gỗ, Quận Mộc, Việt Nam</div>
-  <div>Địa chỉ: Đường abc, Thành phố Hà Nội</div>
-  <div>Điện thoại: 0909 123 456</div>
-  <div class="social-icons">
-    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="https://img.icons8.com/ios-filled/24/000000/facebook-new.png" alt="Facebook" />
-    </a>
-    <a href="https://line.me/en/" target="_blank" rel="noopener" aria-label="Line">
-      <img src="https://img.icons8.com/ios-filled/24/000000/line-me.png" alt="Line" />
-    </a>
-    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="https://img.icons8.com/ios-filled/24/000000/instagram-new.png" alt="Instagram" />
-    </a>
-  </div>
-</div>
+      </div>
     </main>
 
-    <footer>
+    <!-- Footer với thông tin liên lạc fixed dưới cùng -->
+    <footer class="contact-footer" aria-label="Liên hệ / Contact information">
+      <div class="contact-info" id="contactInfo">
+        <!-- Nội dung contact sẽ được thay đổi theo ngôn ngữ qua JS -->
+      </div>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="https://img.icons8.com/ios-filled/24/000000/facebook-new.png" alt="Facebook" />
+        </a>
+        <a href="https://line.me/en/" target="_blank" rel="noopener" aria-label="Line">
+          <img src="https://img.icons8.com/ios-filled/24/000000/line-me.png" alt="Line" />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="https://img.icons8.com/ios-filled/24/000000/instagram-new.png" alt="Instagram" />
+        </a>
+      </div>
       <p>© 2025 木工場ファミリー All Rights Reserved.</p>
     </footer>
+
   </div>
 
   <script>
+    // Nội dung liên hệ theo từng ngôn ngữ
+    const contactContent = {
+      jp: `
+        <div>住所: ベトナム モク区 木通り123番地</div>
+        <div>住所：abc通り、ハノイ市</div>
+        <div>電話: 0909 123 456</div>
+      `,
+      vn: `
+        <div>Địa chỉ: 123 Đường Gỗ, Quận Mộc, Việt Nam</div>
+        <div>Địa chỉ: Đường abc, Thành phố Hà Nội</div>
+        <div>Điện thoại: 0909 123 456</div>
+      `
+    };
+
     function changeLang(lang) {
+      // Ẩn/hiện nội dung chính
       if(lang === 'jp') {
         document.getElementById('jp').classList.add('active');
         document.getElementById('vn').classList.remove('active');
@@ -266,12 +305,16 @@
         document.getElementById('vn').classList.add('active');
         document.getElementById('jp').classList.remove('active');
       }
+
+      // Thay đổi nội dung thông tin liên hệ ở footer
+      document.getElementById('contactInfo').innerHTML = contactContent[lang];
     }
 
     // Mặc định chọn ngôn ngữ Nhật khi tải trang
     window.onload = () => {
-      document.getElementById('languageSelect').value = 'jp';
-      changeLang('jp');
+      const defaultLang = 'jp';
+      document.getElementById('languageSelect').value = defaultLang;
+      changeLang(defaultLang);
     };
   </script>
 </body>
