@@ -292,8 +292,8 @@
         <div>電話: 0909 123 456</div>
       `,
       vn: `
-        <div>Địa chỉ: 123 Đường Gỗ, Quận Mộc, Việt Nam</div>
-        <div>Địa chỉ: Đường abc, Thành phố Hà Nội</div>
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
         <div>Điện thoại: 0909 123 456</div>
       `
     };
@@ -348,10 +348,6 @@
       document.getElementById('languageSelect').value = defaultLang;
       changeLang(defaultLang);
     };
-<script>
-  document.getElementById('logo-text').addEventListener('click', function() {
-    window.location.href = '/'; // Điều hướng về trang chủ
-  });
   </script>
 </body>
 </html>
