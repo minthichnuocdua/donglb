@@ -1,154 +1,145 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>木工場ファミリー - 多言語 + 背景</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
-  <style>
-    /* Nền toàn trang với ảnh rừng cây */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      color: #3e3e3e;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>木工場ファミリー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
+<style>
+  /* Nền ảnh rừng cây phía sau */
+  body {
+    margin: 0;
+    font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: #3e3e3e;
+  }
+  /* Lớp nền phủ tông sáng, bán trong suốt */
+  .overlay {
+    background-color: rgba(250, 249, 246, 0.85);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Header */
+  header {
+    background-color: rgba(125, 90, 54, 0.9);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+  }
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  /* Menu */
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0; padding: 0;
+  }
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  nav ul li a:hover {
+    color: #d1b594;
+  }
+  /* Dropdown chọn ngôn ngữ */
+  .lang-dropdown select {
+    background-color: #7d5a36;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .lang-dropdown select:hover {
+    background-color: #5a3f22;
+  }
 
-    /* Lớp phủ bán trong suốt để làm nền chính */
-    .overlay {
-      background-color: rgba(250, 249, 246, 0.9); /* hơi trong suốt */
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  /* Nội dung chính */
+  main {
+    flex-grow: 1;
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 15px;
+  }
+  .lang-content {
+    display: none;
+  }
+  .lang-content.active {
+    display: block;
+  }
+  h1, h2 {
+    color: #7d5a36;
+  }
+  .products {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .product-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
+    padding: 10px;
+    flex: 1 1 250px;
+  }
+  .product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .product-card h3 {
+    margin: 10px 0 6px;
+  }
 
-    header {
-      background-color: rgba(125, 90, 54, 0.9); /* màu tương tự menu cũ, bán trong suốt */
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      color: #fff;
-      font-weight: bold;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    nav ul li a:hover {
-      color: #d1b594;
-    }
-
-    /* Dropdown chọn ngôn ngữ */
-    .lang-dropdown {
-      position: relative;
-      display: inline-block;
-      color: #fff;
-    }
-
-    .lang-dropdown select {
-      background-color: #7d5a36;
-      border: none;
-      color: #fff;
-      padding: 6px 12px;
-      font-weight: 600;
-      cursor: pointer;
-      border-radius: 5px;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-    }
-
-    .lang-dropdown select:hover {
-      background-color: #5a3f22;
-    }
-
-    /* Nội dung */
-    main {
-      padding: 40px 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-      flex-grow: 1;
-    }
-
-    .lang-content {
-      display: none;
-    }
-
-    .lang-content.active {
-      display: block;
-    }
-
-    /* Phần sản phẩm */
-    .products {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .product-card {
-      background: white;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      padding: 10px;
-      flex: 1 1 250px;
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .product-card h3 {
-      color: #7d5a36;
-      margin: 10px 0 6px;
-    }
-
-  </style>
+  /* Footer */
+  footer {
+    background-color: rgba(125, 90, 54, 0.9);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: auto;
+  }
+  footer a {
+    color: #d1b594;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
   <div class="overlay">
     <header>
       <div class="logo">木工場ファミリー</div>
       <nav>
-        <!-- Dropdown chọn ngôn ngữ bên trái menu -->
+        <!-- Dropdown ngôn ngữ nằm ở vị trí đầu menu -->
         <div class="lang-dropdown">
           <select id="languageSelect" onchange="changeLang(this.value)">
             <option value="jp">日本語</option>
             <option value="vn">Tiếng Việt</option>
           </select>
         </div>
-
         <ul>
           <li><a href="#">ホーム</a></li>
           <li><a href="#">会社概要</a></li>
@@ -159,7 +150,7 @@
     </header>
 
     <main>
-      <!-- Nội dung tiếng Nhật -->
+      <!-- Nội dung Tiếng Nhật -->
       <div id="jp" class="lang-content active">
         <h1>日本品質 - ベトナムの木の伝統</h1>
         <p>私たちの木工場は10年以上にわたり、日本および国際市場向けに高品質な木製品を製造しています。</p>
@@ -181,13 +172,66 @@
             <p>たくさんの収納スペースを持つ便利なキャビネット。</p>
           </div>
         </div>
+        <h2>連絡先</h2>
+        <p>
+          <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a> | 
+          <a href="https://line.me/en/" target="_blank" rel="noopener">Line</a> | 
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        </p>
       </div>
 
-      <!-- Nội dung tiếng Việt -->
+      <!-- Nội dung Tiếng Việt -->
       <div id="vn" class="lang-content">
         <h1>Chất lượng Nhật - Tinh hoa gỗ Việt</h1>
-        <p>Xưởng gỗ gia đình với hơn 10 năm kinh nghiệm trong gia công đồ gỗ chất lượng cao phục vụ thị trường Nhật Bản và quốc tế.</p>
+        <p>Xưởng gỗ gia đình với hơn 10 năm kinh nghiệm trong gia công đồ gỗ chất lượng cao phục vụ thị trường Nhật Bản và quốc tế。</p>
         <h2>Sản phẩm nổi bật</h2>
         <div class="products">
           <div class="product-card">
-            <img
+            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
+            <h3>Ghế gỗ tự nhiên</h3>
+            <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+          </div>
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
+            <h3>Bàn ăn phong cách Nhật</h3>
+            <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
+          </div>
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
+            <h3>Tủ đựng đồ đa năng</h3>
+            <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
+          </div>
+        </div>
+        <h2>Liên hệ</h2>
+        <p>
+          <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a> | 
+          <a href="https://line.me/en/" target="_blank" rel="noopener">Line</a> | 
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 木工場ファミリー All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function changeLang(lang) {
+      if(lang === 'jp') {
+        document.getElementById('jp').classList.add('active');
+        document.getElementById('vn').classList.remove('active');
+      } else {
+        document.getElementById('vn').classList.add('active');
+        document.getElementById('jp').classList.remove('active');
+      }
+    }
+
+    // Mặc định chọn ngôn ngữ Nhật khi tải trang
+    window.onload = () => {
+      document.getElementById('languageSelect').value = 'jp';
+      changeLang('jp');
+    };
+  </script>
+</body>
+</html>
