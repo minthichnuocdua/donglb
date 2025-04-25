@@ -349,5 +349,9 @@
       changeLang(defaultLang);
     };
   </script>
+  <script>
+  const baseHref = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/');
+  document.querySelector('#logo-text a').setAttribute('href', baseHref);
+</script>
 </body>
 </html>
