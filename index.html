@@ -3,29 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>木工場ホームページ</title>
+  <title>木工場ファミリー - 多言語サンプル</title>
   <style>
-    /* Reset cơ bản */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Kaku Gothic Pro', Meiryo, sans-serif;
-    }
     body {
+      font-family: 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif;
       background-color: #faf9f6;
       color: #3e3e3e;
-      line-height: 1.6;
+      margin: 0; padding: 0;
     }
-    a {
-      color: #6b4c3b;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Header */
     header {
       background-color: #7d5a36;
       color: #fff;
@@ -33,152 +18,80 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 2px;
     }
     nav ul {
       list-style: none;
       display: flex;
       gap: 25px;
-    }
-    nav ul li {
-      font-weight: 600;
+      margin: 0; padding: 0;
     }
     nav ul li a {
       color: #fff;
       font-weight: 600;
+      text-decoration: none;
     }
     nav ul li a:hover {
       color: #d1b594;
     }
-
-    /* Banner */
-    .banner {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
-      background-position: center;
-      background-size: cover;
-      height: 300px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
-      margin-bottom: 40px;
+    /* Nút đổi ngôn ngữ */
+    .lang-switch {
+      margin: 15px 30px;
+      text-align: right;
     }
-    .banner h1 {
-      font-size: 2.5rem;
-      background-color: rgba(125,90,54, 0.7);
-      padding: 20px 40px;
-      border-radius: 8px;
+    .lang-switch button {
+      background-color: #7d5a36;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      margin-left: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 5px;
     }
-
-    /* Container */
-    .container {
-      width: 90%;
+    .lang-switch button:hover {
+      background-color: #5a3f22;
+    }
+    /* Ẩn các nội dung không dùng */
+    .lang-content {
+      display: none;
+      padding: 0 30px 60px;
       max-width: 1100px;
-      margin: 0 auto 50px;
+      margin: 0 auto;
     }
-
-    /* 紹介 */
-    .intro {
-      text-align: center;
-      margin-bottom: 50px;
-      font-size: 1.2rem;
-      color: #5c4b3b;
+    .lang-content.active {
+      display: block;
     }
-
-    /* 注目の商品 */
+    /* Ví dụ style cho phần sản phẩm... */
     .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
-      gap: 30px;
-      margin-bottom: 60px;
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
     }
     .product-card {
-      background-color: #fff;
-      border-radius: 10px;
+      background: white;
       box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      flex: 1 1 250px;
+      padding: 10px;
     }
     .product-card img {
       width: 100%;
-      height: 180px;
+      height: 150px;
       object-fit: cover;
+      border-radius: 8px;
     }
-    .product-info {
-      padding: 15px 20px;
-    }
-    .product-info h3 {
-      margin-bottom: 10px;
+    .product-card h3 {
       color: #7d5a36;
-    }
-
-    /* 作業フロー */
-    .workflow {
-      background-color: #f3eee8;
-      padding: 40px 20px;
-      border-radius: 10px;
-      max-width: 900px;
-      margin: 0 auto 60px;
-    }
-    .workflow h2 {
-      text-align: center;
-      color: #7d5a36;
-      margin-bottom: 30px;
-    }
-    .steps {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .step {
-      width: 200px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-    }
-    .step img {
-      width: 60px;
-      margin-bottom: 15px;
-    }
-    .step p {
-      font-weight: 600;
-      color: #5c4b3b;
-    }
-
-    /* フッター */
-    footer {
-      background-color: #7d5a36;
-      color: #fff;
-      text-align: center;
-      padding: 25px 15px;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #d1b594;
-      margin: 0 10px;
+      margin: 10px 0 6px;
     }
   </style>
-  <!-- Google Fonts: Noto Sans JP -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
 </head>
 <body>
 
 <header>
-  <div class="logo">木工場ファミリー</div>
+  <div>木工場ファミリー</div>
   <nav>
     <ul>
       <li><a href="#">ホーム</a></li>
@@ -189,71 +102,12 @@
   </nav>
 </header>
 
-<section class="banner">
-  <h1>日本品質 - ベトナムの木の伝統</h1>
-</section>
-
-<div class="container">
-
-  <section class="intro">
-    <p>
-      私たちの木工場は10年以上にわたり、日本および国際市場向けに高品質な木製品を製造しています。
-    </p>
-  </section>
-
-  <section>
-    <h2 style="color:#7d5a36; text-align:center; margin-bottom: 30px;">注目の商品</h2>
-    <div class="products">
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="製品1" />
-        <div class="product-info">
-          <h3>ナチュラルウッドチェア</h3>
-          <p>使いやすいデザイン、最高品質のオーク材を使用。</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="製品2" />
-        <div class="product-info">
-          <h3>日本風ダイニングテーブル</h3>
-          <p>丈夫で美しい、日本スタイルのテーブル。</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="製品3" />
-        <div class="product-info">
-          <h3>多機能収納キャビネット</h3>
-          <p>たくさんの収納スペースを持つ便利なキャビネット。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="workflow">
-    <h2>作業フロー</h2>
-    <div class="steps">
-      <div class="step">
-        <img src="https://img.icons8.com/ios-filled/50/7d5a36/order-food.png" alt="注文受付" />
-        <p>日本からの注文受付</p>
-      </div>
-      <div class="step">
-        <img src="https://img.icons8.com/ios-filled/50/7d5a36/wood.png" alt="製造" />
-        <p>工場での製造</p>
-      </div>
-      <div class="step">
-        <img src="https://img.icons8.com/ios-filled/50/7d5a36/shipped.png" alt="発送" />
-        <p>納期通りの出荷</p>
-      </div>
-    </div>
-  </section>
-
+<div class="lang-switch">
+  <button onclick="changeLang('jp')">日本語</button>
+  <button onclick="changeLang('vn')">Tiếng Việt</button>
 </div>
 
-<footer>
-  <p>住所: ベトナム モク区 木通り123番地 | 電話: 0909 123 456 | メール: contact@mokukou.jp</p>
-  <p>
-    <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
-  </p>
-</footer>
-
-</body>
-</html>
+<!-- Nội dung tiếng Nhật -->
+<div id="jp" class="lang-content active">
+  <h1>日本品質 - ベトナムの木の伝統</h1>
+  <p>私たちの木工場は10年以上にわ
