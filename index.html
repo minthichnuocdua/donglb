@@ -265,9 +265,9 @@
 
     <section class="slider" aria-label="Image slideshow">
       <div class="slides">
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542326237-7a3153438369?auto=format&fit=crop&w=1920&q=95')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1509498043-db27b440d6a0?auto=format&fit=crop&w=1920&q=95')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=1920&q=95')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1527775282359-0c125720f879?auto=format&fit=crop&w=1920&q=95')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=1920&q=95')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1470349842633-c3939e578d50?auto=format&fit=crop&w=1920&q=95')"></div>
       </div>
       <div class="slide-text">
         <h1 id="slide-title">Excellent Japanese Wood</h1>
@@ -369,11 +369,9 @@
   }
 
   function updateText() {
-    const titleEl = document.getElementById('slide-title');
-    const descEl = document.getElementById('slide-desc');
-    if(titleEl && descEl){
-      titleEl.innerHTML = slidesText[lang][currentIndex].title;
-      descEl.textContent = slidesText[lang][currentIndex].desc;
+    if(slideTitle && slideDesc){
+      slideTitle.innerHTML = slidesText[lang][currentIndex].title;
+      slideDesc.textContent = slidesText[lang][currentIndex].desc;
     }
   }
 
