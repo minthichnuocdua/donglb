@@ -76,39 +76,40 @@
   }
   .slides {
     display: flex;
-    transition: transform 0.8s ease-in-out;
+    transition: transform 0.6s ease-in-out;
     height: 100%;
+    width: 300%;
   }
   .slide {
     min-width: 100%;
     height: 100%;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
-    position: relative;
     flex-shrink: 0;
   }
-  .slide-overlay {
+  .slide-text {
     position: absolute;
-    inset: 0;
-    background-color: rgba(0,0,0,0.35);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+    user-select: none;
   }
-  .slide h1 {
+  .slide-text h1 {
     font-size: 3rem;
-    margin: 0 0 15px;
     letter-spacing: 0.12em;
+    margin-bottom: 15px;
   }
-  .slide p {
+  .slide-text p {
     font-size: 1.2rem;
+    font-weight: 600;
     margin: 0;
-    font-weight: 500;
   }
+
+  /* Dots navigation */
   .dots {
     position: absolute;
     bottom: 20px;
@@ -116,12 +117,13 @@
     transform: translateX(-50%);
     display: flex;
     gap: 12px;
+    z-index: 10;
   }
   .dot {
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: rgba(255 255 255 / 0.5);
+    background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: background-color 0.3s;
   }
@@ -254,7 +256,15 @@
     </header>
 
     <section class="slider" aria-label="Image slideshow">
-      <div class="slides"></div>
+      <div class="slides">
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1563201517-519ad92b40a6?auto=format&fit=crop&w=1400&q=80')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522728646934-e51a948d5c74?auto=format&fit=crop&w=1400&q=80')"></div>
+      </div>
+      <div class="slide-text">
+        <h1 id="slide-title">Excellent Japanese Wood</h1>
+        <p id="slide-desc">Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
+      </div>
       <div class="dots" aria-label="Slide controls"></div>
       <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
         <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
@@ -285,22 +295,18 @@
 
       <div id="vn" class="lang-content">
         <h2>Sản phẩm nổi bật</h2>
-        <div class="products">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
-            <h3>Ghế gỗ tự nhiên</h3>
-            <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
-          </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
-            <h3>Bàn ăn phong cách Nhật</h3>
-            <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
-          </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
-            <h3>Tủ đựng đồ đa năng</h3>
-            <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
-          </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
+          <h3>Ghế gỗ tự nhiên</h3>
+          <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
+          <h3>Bàn ăn phong cách Nhật</h3>
+          <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
+          <h3>Tủ đựng đồ đa năng</h3>
+          <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
         </div>
       </div>
     </main>
@@ -328,64 +334,38 @@
   const slidesContainer = document.querySelector('.slides');
   const dotsContainer = document.querySelector('.dots');
   const backToTopBtn = document.getElementById('backToTop');
+  const slideTitle = document.getElementById('slide-title');
+  const slideDesc = document.getElementById('slide-desc');
+  const langSelect = document.getElementById('languageSelect');
+
+  const slidesCount = 3;
+
+  const slidesText = {
+    jp: [
+      {title: "Excellent Japanese Wood", desc: "日本製木材の魅力と価値の向上"},
+      {title: "Excellent Japanese Wood", desc: "日本製木材の魅力と価値の向上"},
+      {title: "Excellent Japanese Wood", desc: "日本製木材の魅力と価値の向上"}
+    ],
+    vn: [
+      {title: "Excellent Japanese Wood", desc: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"},
+      {title: "Excellent Japanese Wood", desc: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"},
+      {title: "Excellent Japanese Wood", desc: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
+    ]
+  };
+
   let currentIndex = 0;
-  let slideWidth = 0;
+  let lang = langSelect.value;
 
-  const slidesData = [
-    {
-      images: {
-        jp: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80',
-        vn: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80'
-      },
-      title: {jp: "Excellent<br>Japanese Wood", vn: "Excellent<br>Japanese Wood"},
-      desc: {jp: "日本製木材の魅力と価値の向上", vn: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
-    },
-    {
-      images: {
-        jp: 'https://images.unsplash.com/photo-1563201517-519ad92b40a6?auto=format&fit=crop&w=1400&q=80',
-        vn: 'https://images.unsplash.com/photo-1563201517-519ad92b40a6?auto=format&fit=crop&w=1400&q=80'
-      },
-      title: {jp: "Excellent<br>Japanese Wood", vn: "Excellent<br>Japanese Wood"},
-      desc: {jp: "日本製木材の魅力と価値の向上", vn: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
-    },
-    {
-      images: {
-        jp: 'https://images.unsplash.com/photo-1522728646934-e51a948d5c74?auto=format&fit=crop&w=1400&q=80',
-        vn: 'https://images.unsplash.com/photo-1522728646934-e51a948d5c74?auto=format&fit=crop&w=1400&q=80'
-      },
-      title: {jp: "Excellent<br>Japanese Wood", vn: "Excellent<br>Japanese Wood"},
-      desc: {jp: "日本製木材の魅力と価値の向上", vn: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
-    }
-  ];
-
-  function createSlides() {
-    slidesContainer.innerHTML = '';
-    slidesData.forEach((slide, i) => {
-      const slideDiv = document.createElement('div');
-      slideDiv.classList.add('slide');
-      slideDiv.style.backgroundImage = `url('${slide.images[lang]}')`;
-
-      const overlayDiv = document.createElement('div');
-      overlayDiv.classList.add('slide-overlay');
-      overlayDiv.innerHTML = `
-        <h1>${slide.title[lang]}</h1>
-        <p>${slide.desc[lang]}</p>
-      `;
-      slideDiv.appendChild(overlayDiv);
-      slidesContainer.appendChild(slideDiv);
-    });
+  function setSlidePosition() {
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
 
-  function createDots() {
-    dotsContainer.innerHTML = '';
-    slidesData.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if(i === 0) dot.classList.add('active');
-      dot.setAttribute('data-index', i);
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    });
+  function updateText() {
+    // Chữ trên slider giữ nguyên nơi cố định, update theo ngôn ngữ và slide
+    const titleEl = document.getElementById('slide-title');
+    const descEl = document.getElementById('slide-desc');
+    titleEl.innerHTML = slidesText[lang][currentIndex].title;
+    descEl.textContent = slidesText[lang][currentIndex].desc;
   }
 
   function updateDots() {
@@ -395,55 +375,47 @@
   }
 
   function goToSlide(index) {
-    if(index < 0) index = slidesData.length - 1;
-    if(index >= slidesData.length) index = 0;
+    if(index < 0) index = slidesCount -1;
+    if(index >= slidesCount) index = 0;
     currentIndex = index;
-    slidesContainer.style.transform = `translateX(-${index * slideWidth}px)`;
+    setSlidePosition();
+    updateText();
     updateDots();
   }
 
-  function nextSlide() {
-    goToSlide(currentIndex + 1);
+  function createDots() {
+    for(let i = 0; i < slidesCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if(i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
   }
 
-  function resizeSlides() {
-    slideWidth = document.querySelector('.slider').clientWidth;
-    slidesContainer.style.width = `${slideWidth * slidesData.length}px`;
-    document.querySelectorAll('.slide').forEach(slide => {
-      slide.style.width = `${slideWidth}px`;
-    });
-    goToSlide(currentIndex);
-  }
+  // Nút lên đầu trang
+  window.addEventListener('scroll', () => {
+    backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
 
-  let lang='jp';
+  // Ngôn ngữ
+  langSelect.addEventListener('change', (e) => {
+    lang = e.target.value;
+    updateText();
+  });
 
-  window.addEventListener('resize', resizeSlides);
   window.onload = () => {
-    createSlides();
     createDots();
-    resizeSlides();
-    setInterval(nextSlide, 8000);
-
-    backToTopBtn.style.display = 'none';
-    window.addEventListener('scroll', () => {
-      backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-    });
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-
-    // Language switcher
-    const langSelect = document.getElementById('languageSelect');
-    langSelect.addEventListener('change', e => {
-      lang = e.target.value;
-      createSlides();
-      resizeSlides();
-    });
-
-    // Language init
-    langSelect.value = lang;
+    goToSlide(0);
     
-    // Init footer, menu, contact info language switching
+    // Khởi tạo tiếng mặc định
+    lang = langSelect.value || 'jp';
+    updateText();
+
+    // Cập nhật các phần menu, footer, contact info theo ngôn ngữ
     const contactContent = {
       jp: `
         <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
@@ -472,11 +444,11 @@
 
     function changeLang(lang) {
       if(lang === 'jp') {
-        document.getElementById('jp')?.classList.add('active');
-        document.getElementById('vn')?.classList.remove('active');
+        document.getElementById('jp').classList.add('active');
+        document.getElementById('vn').classList.remove('active');
       } else {
-        document.getElementById('vn')?.classList.add('active');
-        document.getElementById('jp')?.classList.remove('active');
+        document.getElementById('vn').classList.add('active');
+        document.getElementById('jp').classList.remove('active');
       }
       document.getElementById('contactInfo').innerHTML = contactContent[lang];
       document.getElementById('logo-link').textContent = logoText[lang];
@@ -486,7 +458,6 @@
       });
       document.getElementById('footer-copyright').textContent = copyrightText[lang];
     }
-
     changeLang(lang);
   };
 </script>
