@@ -67,7 +67,7 @@
     background-color: #5a3f22;
   }
 
-  /* SLIDER */
+  /* Slider Styles */
   .slider {
     position: relative;
     width: 100%;
@@ -109,8 +109,6 @@
     margin: 0;
     font-weight: 500;
   }
-
-  /* ĐIỀU HƯỚNG BOTTOM DOTS */
   .dots {
     position: absolute;
     bottom: 20px;
@@ -131,7 +129,7 @@
     background: #d1b594;
   }
 
-  /* NUT BACK TO TOP */
+  /* Back to top button */
   #backToTop {
     position: fixed;
     bottom: 30px;
@@ -158,13 +156,11 @@
     height: 24px;
   }
 
-
   main {
     max-width: 1100px;
     margin: 40px auto 60px;
     padding: 0 15px;
   }
-  
   .lang-content {
     display: none;
   }
@@ -174,7 +170,6 @@
   h1, h2 {
     color: #7d5a36;
   }
-  
   .products {
     display: flex;
     gap: 20px;
@@ -196,7 +191,6 @@
   .product-card h3 {
     margin: 10px 0 6px;
   }
-
   footer.contact-footer {
     position: fixed;
     bottom: 0;
@@ -235,7 +229,6 @@
     width: 22px;
     height: 22px;
   }
-  
 </style>
 </head>
 <body>
@@ -261,28 +254,9 @@
     </header>
 
     <section class="slider" aria-label="Image slideshow">
-      <div class="slides">
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80')">
-          <div class="slide-overlay">
-            <h1>Excellent<br>Japanese Wood</h1>
-            <p>Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
-          </div>
-        </div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1563201517-519ad92b40a6?auto=format&fit=crop&w=1400&q=80')">
-          <div class="slide-overlay">
-            <h1>Excellent<br>Japanese Wood</h1>
-            <p>Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
-          </div>
-        </div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522728646934-e51a948d5c74?auto=format&fit=crop&w=1400&q=80')">
-          <div class="slide-overlay">
-            <h1>Excellent<br>Japanese Wood</h1>
-            <p>Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
-          </div>
-        </div>
-      </div>
+      <div class="slides"></div>
       <div class="dots" aria-label="Slide controls"></div>
-      <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button">
+      <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
         <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
       </button>
     </section>
@@ -351,22 +325,67 @@
   </div>
 
 <script>
-  // Slider JS
-  const slides = document.querySelector('.slides');
-  const slideCount = document.querySelectorAll('.slide').length;
+  const slidesContainer = document.querySelector('.slides');
   const dotsContainer = document.querySelector('.dots');
+  const backToTopBtn = document.getElementById('backToTop');
   let currentIndex = 0;
   let slideWidth = 0;
 
+  const slidesData = [
+    {
+      images: {
+        jp: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80',
+        vn: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80'
+      },
+      title: {jp: "Excellent<br>Japanese Wood", vn: "Excellent<br>Japanese Wood"},
+      desc: {jp: "日本製木材の魅力と価値の向上", vn: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
+    },
+    {
+      images: {
+        jp: 'https://images.unsplash.com/photo-1563201517-519ad92b40a6?auto=format&fit=crop&w=1400&q=80',
+        vn: 'https://images.unsplash.com/photo-1563201517-519ad92b40a6?auto=format&fit=crop&w=1400&q=80'
+      },
+      title: {jp: "Excellent<br>Japanese Wood", vn: "Excellent<br>Japanese Wood"},
+      desc: {jp: "日本製木材の魅力と価値の向上", vn: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
+    },
+    {
+      images: {
+        jp: 'https://images.unsplash.com/photo-1522728646934-e51a948d5c74?auto=format&fit=crop&w=1400&q=80',
+        vn: 'https://images.unsplash.com/photo-1522728646934-e51a948d5c74?auto=format&fit=crop&w=1400&q=80'
+      },
+      title: {jp: "Excellent<br>Japanese Wood", vn: "Excellent<br>Japanese Wood"},
+      desc: {jp: "日本製木材の魅力と価値の向上", vn: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
+    }
+  ];
+
+  function createSlides() {
+    slidesContainer.innerHTML = '';
+    slidesData.forEach((slide, i) => {
+      const slideDiv = document.createElement('div');
+      slideDiv.classList.add('slide');
+      slideDiv.style.backgroundImage = `url('${slide.images[lang]}')`;
+
+      const overlayDiv = document.createElement('div');
+      overlayDiv.classList.add('slide-overlay');
+      overlayDiv.innerHTML = `
+        <h1>${slide.title[lang]}</h1>
+        <p>${slide.desc[lang]}</p>
+      `;
+      slideDiv.appendChild(overlayDiv);
+      slidesContainer.appendChild(slideDiv);
+    });
+  }
+
   function createDots() {
-    for(let i=0; i < slideCount; i++) {
+    dotsContainer.innerHTML = '';
+    slidesData.forEach((_, i) => {
       const dot = document.createElement('div');
       dot.classList.add('dot');
       if(i === 0) dot.classList.add('active');
       dot.setAttribute('data-index', i);
       dot.addEventListener('click', () => goToSlide(i));
       dotsContainer.appendChild(dot);
-    }
+    });
   }
 
   function updateDots() {
@@ -376,10 +395,10 @@
   }
 
   function goToSlide(index) {
-    if(index < 0) index = slideCount - 1;
-    if(index >= slideCount) index = 0;
+    if(index < 0) index = slidesData.length - 1;
+    if(index >= slidesData.length) index = 0;
     currentIndex = index;
-    slides.style.transform = `translateX(-${index * slideWidth}px)`;
+    slidesContainer.style.transform = `translateX(-${index * slideWidth}px)`;
     updateDots();
   }
 
@@ -387,44 +406,52 @@
     goToSlide(currentIndex + 1);
   }
 
-  function startSlideShow() {
-    setInterval(nextSlide, 8000);
-  }
-
   function resizeSlides() {
     slideWidth = document.querySelector('.slider').clientWidth;
-    slides.style.width = `${slideWidth * slideCount}px`;
-    document.querySelectorAll('.slide').forEach(slide=> {
+    slidesContainer.style.width = `${slideWidth * slidesData.length}px`;
+    document.querySelectorAll('.slide').forEach(slide => {
       slide.style.width = `${slideWidth}px`;
     });
-    goToSlide(currentIndex); // Reset position
+    goToSlide(currentIndex);
   }
+
+  let lang='jp';
 
   window.addEventListener('resize', resizeSlides);
   window.onload = () => {
+    createSlides();
     createDots();
     resizeSlides();
-    startSlideShow();
+    setInterval(nextSlide, 8000);
 
-    // Back to top button logic
-    const backToTopBtn = document.getElementById('backToTop');
+    backToTopBtn.style.display = 'none';
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({top: 0, behavior: 'smooth'});
     });
 
     // Language switcher
+    const langSelect = document.getElementById('languageSelect');
+    langSelect.addEventListener('change', e => {
+      lang = e.target.value;
+      createSlides();
+      resizeSlides();
+    });
+
+    // Language init
+    langSelect.value = lang;
+    
+    // Init footer, menu, contact info language switching
     const contactContent = {
       jp: `
-        <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" 
-        style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
-        <div>住所：<a href="https://www.google.com/maps/search/?api=1&query=abc通り+ハノイ市" target="_blank" rel="noopener noreferrer" 
-        style="color:inherit; text-decoration: underline;">abc通り、ハノイ市</a></div>
+        <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
+        <div>住所：<a href="https://www.google.com/maps/search/?api=1&query=abc通り+ハノイ市" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">abc通り、ハノイ市</a></div>
         <div>電話: 0909 123 456</div>`,
       vn: `
-        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" 
-        style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
-        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" 
-        style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
         <div>Điện thoại: 0909 123 456</div>`
     };
 
@@ -445,11 +472,11 @@
 
     function changeLang(lang) {
       if(lang === 'jp') {
-        document.getElementById('jp').classList.add('active');
-        document.getElementById('vn').classList.remove('active');
+        document.getElementById('jp')?.classList.add('active');
+        document.getElementById('vn')?.classList.remove('active');
       } else {
-        document.getElementById('vn').classList.add('active');
-        document.getElementById('jp').classList.remove('active');
+        document.getElementById('vn')?.classList.add('active');
+        document.getElementById('jp')?.classList.remove('active');
       }
       document.getElementById('contactInfo').innerHTML = contactContent[lang];
       document.getElementById('logo-link').textContent = logoText[lang];
@@ -460,9 +487,7 @@
       document.getElementById('footer-copyright').textContent = copyrightText[lang];
     }
 
-    // Default language setup
-    document.getElementById('languageSelect').value = 'jp';
-    changeLang('jp');
+    changeLang(lang);
   };
 </script>
 </body>
