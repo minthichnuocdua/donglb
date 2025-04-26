@@ -6,47 +6,39 @@
 <title>木工場ファミリー</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
 <style>
-  /* ========== BASE STYLES ========== */
   body {
     margin: 0;  
     font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
-    color: #333;
-    background: white;
+    color: #3e3e3e;
     padding-bottom: 100px;
   }
-
   .overlay {
     min-height: 100vh;
-    background: white;
+    background: #faf7f1;
     display: flex;
     flex-direction: column;
   }
-
-  /* ========== HEADER ========== */
   header {
-    background: white;
+    background-color: rgba(125, 90, 54, 0.9);
+    color: white;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1001;
     position: relative;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   }
-
   .logo a {
-    color: #333;
+    color: inherit;
     font-weight: bold;
     font-size: 1.5rem;
     text-decoration: none;
   }
-
   nav {
     display: flex;
     align-items: center;
     gap: 30px;
   }
-
   nav ul {
     list-style: none;
     display: flex;
@@ -54,36 +46,16 @@
     margin: 0;
     padding: 0;
   }
-
   nav ul li a {
-    color: #333;
+    color: white;
     text-decoration: none;
     font-weight: 600;
-    position: relative;
-    transition: color 0.3s;
   }
-
   nav ul li a:hover {
-    color: #e74c3c;
+    color: #d1b594;
   }
-
-  nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #e74c3c;
-    transition: width 0.3s;
-  }
-
-  nav ul li a:hover::after {
-    width: 100%;
-  }
-
   .lang-dropdown select {
-    background: #2ecc71;
+    background-color: #7d5a36;
     color: white;
     border: none;
     padding: 8px 14px;
@@ -91,8 +63,11 @@
     font-weight: 600;
     cursor: pointer;
   }
+  .lang-dropdown select:hover {
+    background-color: #5a3f22;
+  }
 
-  /* ========== SLIDER SECTION ========== */
+  /* Slider container */
   .slider {
     position: relative;
     width: 100vw;
@@ -101,14 +76,12 @@
     margin: 0 auto;
     overflow: hidden;
   }
-
   .slides {
     display: flex;
     transition: transform 0.6s ease-in-out;
     height: 100%;
-    width: 400%;
+    width: 300%;
   }
-
   .slide {
     min-width: 100%;
     height: 100%;
@@ -116,33 +89,34 @@
     background-size: cover;
     flex-shrink: 0;
   }
-
   .slide-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #333;
+    color: #7d5a36;
     text-align: center;
     z-index: 10;
-    text-shadow: 0 2px 4px rgba(255,255,255,0.9);
+    pointer-events: none;
+    user-select: none;
+    text-shadow:
+       1px 1px 2px rgba(255,255,255,0.8),
+       0 0 0.5em rgba(0,0,0,0.6),
+       0 0 0.2em rgba(0,0,0,0.3);
   }
-
   .slide-text h1 {
     font-size: 3.8rem;
     letter-spacing: 0.15em;
     margin-bottom: 0.8em;
     font-weight: 700;
   }
-
   .slide-text p {
     font-size: 1.4rem;
     font-weight: 600;
     margin: 0;
-    color: #555;
   }
 
-  /* ========== DOTS NAVIGATION ========== */
+  /* Dots navigation */
   .dots {
     position: absolute;
     bottom: 25px;
@@ -152,133 +126,25 @@
     gap: 15px;
     z-index: 10;
   }
-
   .dot {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.4);
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
   .dot.active {
-    background: #e74c3c;
-    box-shadow: 0 0 5px rgba(231,76,60,0.5);
+    background: #d1b594;
+    box-shadow: 0 0 5px #d1b594;
   }
 
-  /* ========== MAIN CONTENT ========== */
-  main {
-    max-width: 1100px;
-    margin: 40px auto 60px;
-    padding: 0 15px;
-  }
-
-  .lang-content {
-    display: none;
-  }
-
-  .lang-content.active {
-    display: block;
-  }
-
-  h1, h2 {
-    color: #333;
-    position: relative;
-    padding-bottom: 15px;
-  }
-
-  h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 3px;
-    background: #e74c3c;
-  }
-
-  .products {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .product-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    padding: 20px;
-    flex: 1 1 250px;
-  }
-
-  .product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-
-  .product-card h3 {
-    margin: 10px 0 6px;
-    color: #333;
-  }
-
-  .product-card p {
-    color: #666;
-    font-size: 0.9rem;
-  }
-
-  /* ========== FOOTER ========== */
-  footer.contact-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255,255,255,0.9);
-    color: #333;
-    text-align: center;
-    padding: 15px;
-    font-size: 12px;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  footer.contact-footer .contact-info div {
-    margin: 2px 0;
-  }
-
-  footer.contact-footer .social-icons {
-    margin-top: 10px;
-  }
-
-  footer.contact-footer a {
-    margin: 0 8px;
-    display: inline-block;
-    color: #2ecc71;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  footer.contact-footer a:hover {
-    text-decoration: underline;
-  }
-
-  footer.contact-footer a img {
-    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
-    width: 22px;
-    height: 22px;
-  }
-
-  /* ========== BACK TO TOP ========== */
+  /* Back to top button */
   #backToTop {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #2ecc71;
+    background-color: #7d5a36;
     border: none;
     border-radius: 50%;
     width: 48px;
@@ -291,19 +157,90 @@
     align-items: center;
     transition: background-color 0.3s;
   }
-
   #backToTop:hover {
-    background: #27ae60;
+    background-color: #5a3f22;
   }
-
   #backToTop svg {
     fill: white;
     width: 24px;
     height: 24px;
   }
+
+  main {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 15px;
+  }
+  .lang-content {
+    display: none;
+  }
+  .lang-content.active {
+    display: block;
+  }
+  h1, h2 {
+    color: #7d5a36;
+  }
+  .products {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .product-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
+    padding: 10px;
+    flex: 1 1 250px;
+  }
+  .product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .product-card h3 {
+    margin: 10px 0 6px;
+  }
+  footer.contact-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(125, 90, 54, 0.9);
+    color: white;
+    text-align: center;
+    padding: 10px 15px 15px;
+    font-size: 12px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer.contact-footer .contact-info div {
+    margin: 2px 0;
+  }
+  footer.contact-footer .social-icons {
+    margin-top: 6px;
+  }
+  footer.contact-footer a {
+    margin: 0 8px;
+    display: inline-block;
+    color: #d1b594;
+    text-decoration: none;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  footer.contact-footer a:hover {
+    text-decoration: underline;
+  }
+  footer.contact-footer a img {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
+    width: 22px;
+    height: 22px;
+  }
 </style>
 </head>
-
 <body>
   <div class="overlay">
     <header>
@@ -327,21 +264,29 @@
     </header>
 
     <section class="slider" aria-label="Image slideshow">
-      <div class="slides">
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600566753093-8af25e1e7d3d?auto=format&fit=crop&w=1920&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1920&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1920&q=80')"></div>
-      </div>
-      <div class="slide-text">
-        <h1 id="slide-title">自然と調和した木造建築</h1>
-        <p id="slide-desc">緑に包まれた伝統の美</p>
-      </div>
-      <div class="dots" aria-label="Slide controls"></div>
-      <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
-        <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
-      </button>
-    </section>
+  <!-- Thay thế phần slides -->
+<div class="slides">
+  <!-- Ảnh 1 - Nhà gỗ trong rừng -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600566753093-8af25e1e7d3d?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 2 - Xưởng gỗ xanh mát -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 3 - Rừng tre Nhật -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 4 - Nội thất gỗ tự nhiên -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+</div>
+  <div class="slide-text">
+    <h1 id="slide-title">Excellent Japanese Wood</h1>
+    <p id="slide-desc">Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
+  </div>
+  <div class="dots" aria-label="Slide controls"></div>
+  <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
+    <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
+  </button>
+</section>
 
     <main>
       <div id="jp" class="lang-content active">
@@ -367,22 +312,18 @@
 
       <div id="vn" class="lang-content">
         <h2>Sản phẩm nổi bật</h2>
-        <div class="products">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
-            <h3>Ghế gỗ tự nhiên</h3>
-            <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
-          </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
-            <h3>Bàn ăn phong cách Nhật</h3>
-            <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
-          </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
-            <h3>Tủ đựng đồ đa năng</h3>
-            <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
-          </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
+          <h3>Ghế gỗ tự nhiên</h3>
+          <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
+          <h3>Bàn ăn phong cách Nhật</h3>
+          <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
+          <h3>Tủ đựng đồ đa năng</h3>
+          <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
         </div>
       </div>
     </main>
@@ -407,7 +348,6 @@
   </div>
 
 <script>
-  // ========== SLIDER CONFIG ==========
   const slidesContainer = document.querySelector('.slides');
   const dotsContainer = document.querySelector('.dots');
   const backToTopBtn = document.getElementById('backToTop');
@@ -415,24 +355,25 @@
   const slideDesc = document.getElementById('slide-desc');
   const langSelect = document.getElementById('languageSelect');
 
-  const slidesCount = 4;
+  // Sửa slidesCount thành 4
+const slidesCount = 4;
 
-  const slidesText = {
-    jp: [
-      {title: "自然と調和した木造建築", desc: "緑に包まれた伝統の美"},
-      {title: "職人の技が光る工房", desc: "丁寧な手仕事の現場"},
-      {title: "持続可能な森林資源", desc: "未来へつなぐ森づくり"},
-      {title: "上質な木の温もり", desc: "自然素材の心地よさ"}
-    ],
-    vn: [
-      {title: "Kiến trúc gỗ hòa hợp thiên nhiên", desc: "Vẻ đẹp truyền thống giữa màu xanh"},
-      {title: "Xưởng sản xuất tinh xảo", desc: "Nơi nghệ nhân thể hiện tài hoa"},
-      {title: "Nguồn nguyên liệu bền vững", desc: "Rừng xanh cho thế hệ tương lai"},
-      {title: "Sự ấm áp từ gỗ tự nhiên", desc: "Cảm nhận chất liệu thiên nhiên"}
-    ]
-  };
+// Cập nhật nội dung slider
+const slidesText = {
+  jp: [
+    {title: "自然と調和した木造建築", desc: "緑に包まれた伝統の美"},
+    {title: "職人の技が光る工房", desc: "丁寧な手仕事の現場"},
+    {title: "持続可能な森林資源", desc: "未来へつなぐ森づくり"},
+    {title: "上質な木の温もり", desc: "自然素材の心地よさ"}
+  ],
+  vn: [
+    {title: "Kiến trúc gỗ hòa hợp thiên nhiên", desc: "Vẻ đẹp truyền thống giữa màu xanh"},
+    {title: "Xưởng sản xuất tinh xảo", desc: "Nơi nghệ nhân thể hiện tài hoa"},
+    {title: "Nguồn nguyên liệu bền vững", desc: "Rừng xanh cho thế hệ tương lai"},
+    {title: "Sự ấm áp từ gỗ tự nhiên", desc: "Cảm nhận chất liệu thiên nhiên"}
+  ]
+};
 
-  // ========== SLIDER FUNCTIONS ==========
   let currentIndex = 0;
   let lang = langSelect.value;
 
@@ -459,9 +400,10 @@
     currentIndex = index;
     setSlidePosition();
     updateText();
-  // ========== SLIDER CONTROL ==========
+    updateDots();
+  }
+
   function createDots() {
-    dotsContainer.innerHTML = '';
     for(let i = 0; i < slidesCount; i++) {
       const dot = document.createElement('div');
       dot.classList.add('dot');
@@ -471,84 +413,73 @@
     }
   }
 
-  // ========== AUTO SLIDE ==========
-  let autoSlideInterval = setInterval(() => {
-    goToSlide(currentIndex + 1);
-  }, 5000);
-
-  function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(() => {
-      goToSlide(currentIndex + 1);
-    }, 5000);
+  window.addEventListener('scroll', () => {
+    if(backToTopBtn){
+      backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    }
+  });
+  if(backToTopBtn){
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
   }
 
-  // ========== LANGUAGE HANDLER ==========
-  function changeLang(selectedLang) {
-    lang = selectedLang;
+  langSelect?.addEventListener('change', (e) => {
+    lang = e.target.value;
     updateText();
-    
-    // Cập nhật nội dung theo ngôn ngữ
+  });
+
+  window.onload = () => {
+    createDots();
+    goToSlide(0);
+    lang = langSelect?.value || 'jp';
+    updateText();
+
     const contactContent = {
       jp: `
-        <div>住所: <a href="https://maps.app.goo.gl/..." target="_blank" style="color:#2ecc71">北海道東京区大谷町1-3-2</a></div>
-        <div>TEL: 0909-123-456</div>`,
+        <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
+        <div>住所：<a href="https://www.google.com/maps/search/?api=1&query=abc通り+ハノイ市" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">abc通り、ハノイ市</a></div>
+        <div>電話: 0909 123 456</div>`
+      ,
       vn: `
-        <div>Địa chỉ: <a href="https://maps.app.goo.gl/..." target="_blank" style="color:#2ecc71">123 Đường Gỗ, Quận Mộc</a></div>
-        <div>Điện thoại: 0909-123-456</div>`
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
+        <div>Điện thoại: 0909 123 456</div>`
     };
 
-    // Cập nhật footer
-    document.getElementById('contactInfo').innerHTML = contactContent[lang];
-    
-    // Cập nhật menu
+    const logoText = {
+      jp: "木工場ファミリー",
+      vn: "Đồ gỗ MiDo"
+    };
+
     const menuText = {
       jp: ["ホーム", "会社概要", "製品紹介", "お問い合わせ"],
       vn: ["Trang Chủ", "Giới Thiệu", "Sản Phẩm", "Liên Hệ"]
     };
-    
-    document.querySelectorAll('#menu-list li a').forEach((item, index) => {
-      item.textContent = menuText[lang][index];
-    });
 
-    // Cập nhật logo text
-    document.getElementById('logo-link').textContent = lang === 'jp' 
-      ? "木工場ファミリー" 
-      : "Gia Đình Xưởng Gỗ";
-  }
+    const copyrightText = {
+      jp: "© 2025 木工場ファミリー All Rights Reserved.",
+      vn: "© 2025 Gia Đình Xưởng Gỗ Bản Quyền Đã Được Bảo Lưu."
+    };
 
-  // ========== EVENT LISTENERS ==========
-  window.addEventListener('scroll', () => {
-    backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-  });
-
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  });
-
-  // ========== INITIALIZATION ==========
-  window.onload = () => {
-    createDots();
-    goToSlide(0);
-    lang = langSelect.value;
-    updateText();
-    changeLang(langSelect.value);
+    function changeLang(lang) {
+      if(lang === 'jp') {
+        document.getElementById('jp').classList.add('active');
+        document.getElementById('vn').classList.remove('active');
+      } else {
+        document.getElementById('vn').classList.add('active');
+        document.getElementById('jp').classList.remove('active');
+      }
+      document.getElementById('contactInfo').innerHTML = contactContent[lang];
+      document.getElementById('logo-link').textContent = logoText[lang];
+      const menuItems = document.querySelectorAll('#menu-list li a');
+      menuItems.forEach((item, index) => {
+        item.textContent = menuText[lang][index];
+      });
+      document.getElementById('footer-copyright').textContent = copyrightText[lang];
+    }
+    changeLang(lang);
   };
-
-  // ========== TOUCH SUPPORT ==========
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  slidesContainer.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  slidesContainer.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    if(touchStartX - touchEndX > 50) goToSlide(currentIndex + 1);
-    if(touchStartX - touchEndX < -50) goToSlide(currentIndex - 1);
-    resetAutoSlide();
-  });
 </script>
 </body>
 </html>
