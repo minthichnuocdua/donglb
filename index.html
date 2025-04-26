@@ -116,27 +116,27 @@
     margin: 0;
   }
 
-  /* Dots navigation */
+  /* Dots navigation - UPDATED */
   .dots {
     position: absolute;
     bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 40px;
     display: flex;
-    gap: 15px;
+    gap: 10px;
     z-index: 10;
   }
   .dot {
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: background-color 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.2);
   }
   .dot.active {
-    background: #d1b594;
-    box-shadow: 0 0 5px #d1b594;
+    background: #ff9933;
+    box-shadow: 0 0 5px rgba(255, 153, 51, 0.7);
   }
 
   /* Back to top button */
