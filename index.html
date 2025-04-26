@@ -9,29 +9,27 @@
   body {
     margin: 0;  
     font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
-    color: #333;
-    background: white;
+    color: #3e3e3e;
     padding-bottom: 100px;
   }
   .overlay {
     min-height: 100vh;
-    background: white;
+    background: #faf7f1;
     display: flex;
     flex-direction: column;
   }
   header {
-    background-color: white !important;
-    color: #333;
+    background-color: rgba(125, 90, 54, 0.9);
+    color: white;
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1001;
     position: relative;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   }
   .logo a {
-    color: #333 !important;
+    color: inherit;
     font-weight: bold;
     font-size: 1.5rem;
     text-decoration: none;
@@ -49,29 +47,15 @@
     padding: 0;
   }
   nav ul li a {
-    color: #333 !important;
+    color: white;
     text-decoration: none;
     font-weight: 600;
-    position: relative;
   }
   nav ul li a:hover {
-    color: #e74c3c !important;
-  }
-  nav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #e74c3c;
-    transition: width 0.3s;
-  }
-  nav ul li a:hover::after {
-    width: 100%;
+    color: #d1b594;
   }
   .lang-dropdown select {
-    background-color: #2ecc71;
+    background-color: #7d5a36;
     color: white;
     border: none;
     padding: 8px 14px;
@@ -79,8 +63,11 @@
     font-weight: 600;
     cursor: pointer;
   }
+  .lang-dropdown select:hover {
+    background-color: #5a3f22;
+  }
 
-  /* Slider */
+  /* Slider container */
   .slider {
     position: relative;
     width: 100vw;
@@ -93,7 +80,7 @@
     display: flex;
     transition: transform 0.6s ease-in-out;
     height: 100%;
-    width: 400%;
+    width: 300%;
   }
   .slide {
     min-width: 100%;
@@ -107,107 +94,392 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #333;
+    color: #7d5a36;
     text-align: center;
     z-index: 10;
     pointer-events: none;
     user-select: none;
-    text-shadow: 0 2px 4px rgba(255,255,255,0.9);
+    text-shadow:
+       1px 1px 2px rgba(255,255,255,0.8),
+       0 0 0.5em rgba(0,0,0,0.6),
+       0 0 0.2em rgba(0,0,0,0.3);
   }
   .slide-text h1 {
     font-size: 3.8rem;
     letter-spacing: 0.15em;
     margin-bottom: 0.8em;
     font-weight: 700;
-    color: #333;
   }
   .slide-text p {
     font-size: 1.4rem;
     font-weight: 600;
     margin: 0;
-    color: #555;
   }
 
-  /* Các phần còn lại giữ nguyên */
-  /* ... (giữ nguyên các phần products, footer, ...) */
-
-  h1, h2, h3 {
-    color: #333;
-    position: relative;
-    padding-bottom: 8px;
-  }
-  h2::after {
-    content: '';
+  /* Dots navigation */
+  .dots {
     position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+  }
+  .dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .dot.active {
+    background: #d1b594;
+    box-shadow: 0 0 5px #d1b594;
+  }
+
+  /* Back to top button */
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #7d5a36;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 1005;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  #backToTop:hover {
+    background-color: #5a3f22;
+  }
+  #backToTop svg {
+    fill: white;
+    width: 24px;
+    height: 24px;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 15px;
+  }
+  .lang-content {
+    display: none;
+  }
+  .lang-content.active {
+    display: block;
+  }
+  h1, h2 {
+    color: #7d5a36;
+  }
+  .products {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .product-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
+    padding: 10px;
+    flex: 1 1 250px;
+  }
+  .product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .product-card h3 {
+    margin: 10px 0 6px;
+  }
+  footer.contact-footer {
+    position: fixed;
     bottom: 0;
     left: 0;
-    width: 50px;
-    height: 3px;
-    background: #e74c3c;
+    width: 100%;
+    background-color: rgba(125, 90, 54, 0.9);
+    color: white;
+    text-align: center;
+    padding: 10px 15px 15px;
+    font-size: 12px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-
-  #backToTop {
-    background: #2ecc71 !important;
+  footer.contact-footer .contact-info div {
+    margin: 2px 0;
+  }
+  footer.contact-footer .social-icons {
+    margin-top: 6px;
+  }
+  footer.contact-footer a {
+    margin: 0 8px;
+    display: inline-block;
+    color: #d1b594;
+    text-decoration: none;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  footer.contact-footer a:hover {
+    text-decoration: underline;
+  }
+  footer.contact-footer a img {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
+    width: 22px;
+    height: 22px;
   }
 </style>
 </head>
 <body>
-  <!-- Phần header giữ nguyên -->
   <div class="overlay">
     <header>
-      <!-- ... (giữ nguyên phần header) ... -->
+      <div class="logo" id="logo-text">
+        <a href="/donglb/" id="logo-link" style="color: inherit; text-decoration: none;">木工場ファミリー</a>
+      </div>
+      <nav>
+        <div class="lang-dropdown">
+          <select id="languageSelect" onchange="changeLang(this.value)">
+            <option value="jp">日本語</option>
+            <option value="vn">Tiếng Việt</option>
+          </select>
+        </div>
+        <ul id="menu-list">
+          <li><a href="/donglb/" data-key="home">ホーム</a></li>
+          <li><a href="/donglb/about.html" data-key="about">会社概要</a></li>
+          <li><a href="/donglb/products.html" data-key="products">製品紹介</a></li>
+          <li><a href="/donglb/contact.html" data-key="contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <!-- Slider mới -->
     <section class="slider" aria-label="Image slideshow">
-      <div class="slides">
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600566753093-8af25e1e7d3d?auto=format&fit=crop&w=1920&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1920&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1920&q=80')"></div>
-      </div>
-      <div class="slide-text">
-        <h1 id="slide-title">自然と調和した木造建築</h1>
-        <p id="slide-desc">緑に包まれた伝統の美</p>
-      </div>
-      <div class="dots" aria-label="Slide controls"></div>
-      <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
-        <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
-      </button>
-    </section>
+  <!-- Thay thế phần slides -->
+<div class="slides">
+  <!-- Ảnh 1 - Nhà gỗ trong rừng -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600566753093-8af25e1e7d3d?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 2 - Xưởng gỗ xanh mát -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 3 - Rừng tre Nhật -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 4 - Nội thất gỗ tự nhiên -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+</div>
+  <div class="slide-text">
+    <h1 id="slide-title">Excellent Japanese Wood</h1>
+    <p id="slide-desc">Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
+  </div>
+  <div class="dots" aria-label="Slide controls"></div>
+  <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
+    <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
+  </button>
+</section>
 
-    <!-- Phần main content giữ nguyên -->
     <main>
-      <!-- ... (giữ nguyên phần products) ... -->
+      <div id="jp" class="lang-content active">
+        <h2>注目の商品</h2>
+        <div class="products">
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="製品1" />
+            <h3>ナチュラルウッドチェア</h3>
+            <p>使いやすいデザイン、最高品質のオーク材を使用。</p>
+          </div>
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="製品2" />
+            <h3>日本風ダイニングテーブル</h3>
+            <p>丈夫で美しい、日本スタイルのテーブル。</p>
+          </div>
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="製品3" />
+            <h3>多機能収納キャビネット</h3>
+            <p>たくさんの収納スペースを持つ便利なキャビネット。</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="vn" class="lang-content">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
+          <h3>Ghế gỗ tự nhiên</h3>
+          <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
+          <h3>Bàn ăn phong cách Nhật</h3>
+          <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
+          <h3>Tủ đựng đồ đa năng</h3>
+          <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
+        </div>
+      </div>
     </main>
 
-    <!-- Footer giữ nguyên -->
     <footer class="contact-footer" aria-label="Liên hệ / Contact information">
-      <!-- ... (giữ nguyên footer) ... -->
+      <div class="contact-info" id="contactInfo"></div>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <img src="https://img.icons8.com/ios-filled/24/000000/facebook-new.png" alt="Facebook" />
+        </a>
+        <a href="https://line.me/en/" target="_blank" rel="noopener" aria-label="Line">
+          <img src="https://img.icons8.com/ios-filled/24/000000/line-me.png" alt="Line" />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="https://img.icons8.com/ios-filled/24/000000/instagram-new.png" alt="Instagram" />
+        </a>
+      </div>
+      <p id="footer-copyright">
+        © 2025 木工場ファミリー All Rights Reserved.
+      </p>
     </footer>
   </div>
 
 <script>
-  // Cập nhật JavaScript
-  const slidesCount = 4; // Thay đổi từ 3 lên 4
+  const slidesContainer = document.querySelector('.slides');
+  const dotsContainer = document.querySelector('.dots');
+  const backToTopBtn = document.getElementById('backToTop');
+  const slideTitle = document.getElementById('slide-title');
+  const slideDesc = document.getElementById('slide-desc');
+  const langSelect = document.getElementById('languageSelect');
 
-  const slidesText = {
-    jp: [
-      {title: "自然と調和した木造建築", desc: "緑に包まれた伝統の美"},
-      {title: "職人の技が光る工房", desc: "丁寧な手仕事の現場"},
-      {title: "持続可能な森林資源", desc: "未来へつなぐ森づくり"},
-      {title: "上質な木の温もり", desc: "自然素材の心地よさ"}
-    ],
-    vn: [
-      {title: "Kiến trúc gỗ hòa hợp thiên nhiên", desc: "Vẻ đẹp truyền thống giữa màu xanh"},
-      {title: "Xưởng sản xuất tinh xảo", desc: "Nơi nghệ nhân thể hiện tài hoa"},
-      {title: "Nguồn nguyên liệu bền vững", desc: "Rừng xanh cho thế hệ tương lai"},
-      {title: "Sự ấm áp từ gỗ tự nhiên", desc: "Cảm nhận chất liệu thiên nhiên"}
-    ]
+  // Thay đổi từ 3 lên 4 slides
+const slidesCount = 4;
+
+// Cập nhật text cho slide
+const slidesText = {
+  jp: [
+    {title: "日本の伝統的木造建築", desc: "伝統技術と現代デザインの融合"},
+    {title: "職人による丁寧な加工", desc: "熟練の技術で木材を最高の状態に"},
+    {title: "厳選された天然木材", desc: "持続可能な森林管理のもと育成"},
+    {title: "上質な木製家具", desc: "日本の美意識を形にした製品群"}
+  ],
+  vn: [
+    {title: "Kiến trúc gỗ truyền thống Nhật Bản", desc: "Sự kết hợp hài hòa giữa truyền thống và hiện đại"},
+    {title: "Gia công tỉ mỉ bởi nghệ nhân", desc: "Biến nguyên liệu thô thành tác phẩm nghệ thuật"},
+    {title: "Nguyên liệu gỗ tự nhiên", desc: "Được khai thác từ rừng trồng bền vững"},
+    {title: "Sản phẩm nội thất cao cấp", desc: "Tinh hoa nghề mộc Nhật Bản"}
+  ]
+};
+
+  let currentIndex = 0;
+  let lang = langSelect.value;
+
+  function setSlidePosition() {
+    slidesContainer.style.transform = translateX(-${currentIndex * 100}%);
+  }
+
+  function updateText() {
+    if(slideTitle && slideDesc){
+      slideTitle.innerHTML = slidesText[lang][currentIndex].title;
+      slideDesc.textContent = slidesText[lang][currentIndex].desc;
+    }
+  }
+
+  function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
+  }
+
+  function goToSlide(index) {
+    if(index < 0) index = slidesCount -1;
+    if(index >= slidesCount) index = 0;
+    currentIndex = index;
+    setSlidePosition();
+    updateText();
+    updateDots();
+  }
+
+  function createDots() {
+    for(let i = 0; i < slidesCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if(i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    if(backToTopBtn){
+      backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    }
+  });
+  if(backToTopBtn){
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  }
+
+  langSelect?.addEventListener('change', (e) => {
+    lang = e.target.value;
+    updateText();
+  });
+
+  window.onload = () => {
+    createDots();
+    goToSlide(0);
+    lang = langSelect?.value || 'jp';
+    updateText();
+
+    const contactContent = {
+      jp: `
+        <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
+        <div>住所：<a href="https://www.google.com/maps/search/?api=1&query=abc通り+ハノイ市" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">abc通り、ハノイ市</a></div>
+        <div>電話: 0909 123 456</div>`
+      ,
+      vn: `
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
+        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
+        <div>Điện thoại: 0909 123 456</div>`
+    };
+
+    const logoText = {
+      jp: "木工場ファミリー",
+      vn: "Đồ gỗ MiDo"
+    };
+
+    const menuText = {
+      jp: ["ホーム", "会社概要", "製品紹介", "お問い合わせ"],
+      vn: ["Trang Chủ", "Giới Thiệu", "Sản Phẩm", "Liên Hệ"]
+    };
+
+    const copyrightText = {
+      jp: "© 2025 木工場ファミリー All Rights Reserved.",
+      vn: "© 2025 Gia Đình Xưởng Gỗ Bản Quyền Đã Được Bảo Lưu."
+    };
+
+    function changeLang(lang) {
+      if(lang === 'jp') {
+        document.getElementById('jp').classList.add('active');
+        document.getElementById('vn').classList.remove('active');
+      } else {
+        document.getElementById('vn').classList.add('active');
+        document.getElementById('jp').classList.remove('active');
+      }
+      document.getElementById('contactInfo').innerHTML = contactContent[lang];
+      document.getElementById('logo-link').textContent = logoText[lang];
+      const menuItems = document.querySelectorAll('#menu-list li a');
+      menuItems.forEach((item, index) => {
+        item.textContent = menuText[lang][index];
+      });
+      document.getElementById('footer-copyright').textContent = copyrightText[lang];
+    }
+    changeLang(lang);
   };
-
-  // Phần còn lại của JavaScript giữ nguyên
-  // ... (giữ nguyên các hàm xử lý slider và ngôn ngữ)
 </script>
 </body>
 </html>
