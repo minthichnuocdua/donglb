@@ -1,485 +1,655 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>木工場ファミリー</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;  
-    font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
-    color: #3e3e3e;
-    padding-bottom: 100px;
-  }
-  .overlay {
-    min-height: 100vh;
-    background: #faf7f1;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background-color: rgba(125, 90, 54, 0.9);
-    color: white;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1001;
-    position: relative;
-  }
-  .logo a {
-    color: inherit;
-    font-weight: bold;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-  }
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  nav ul li a:hover {
-    color: #d1b594;
-  }
-  .lang-dropdown select {
-    background-color: #7d5a36;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .lang-dropdown select:hover {
-    background-color: #5a3f22;
-  }
-
-  /* Slider container */
-  .slider {
-    position: relative;
-    width: 100vw;
-    max-width: 1920px;
-    height: 1080px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .slides {
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-    height: 100%;
-    width: 300%;
-  }
-  .slide {
-    min-width: 100%;
-    height: 100%;
-    background-position: center center;
-    background-size: cover;
-    flex-shrink: 0;
-  }
-  .slide-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #7d5a36;
-    text-align: center;
-    z-index: 10;
-    pointer-events: none;
-    user-select: none;
-    text-shadow:
-       1px 1px 2px rgba(255,255,255,0.8),
-       0 0 0.5em rgba(0,0,0,0.6),
-       0 0 0.2em rgba(0,0,0,0.3);
-  }
-  .slide-text h1 {
-    font-size: 3.8rem;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.8em;
-    font-weight: 700;
-  }
-  .slide-text p {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  /* Dots navigation - UPDATED */
-  .dots {
-    position: absolute;
-    bottom: 25px;
-    left: 40px;
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-  }
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-  }
-  .dot.active {
-    background: #ff9933;
-    box-shadow: 0 0 5px rgba(255, 153, 51, 0.7);
-  }
-
-  /* Back to top button */
-  #backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #7d5a36;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    z-index: 1005;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-  }
-  #backToTop:hover {
-    background-color: #5a3f22;
-  }
-  #backToTop svg {
-    fill: white;
-    width: 24px;
-    height: 24px;
-  }
-
-  main {
-    max-width: 1100px;
-    margin: 40px auto 60px;
-    padding: 0 15px;
-  }
-  .lang-content {
-    display: none;
-  }
-  .lang-content.active {
-    display: block;
-  }
-  h1, h2 {
-    color: #7d5a36;
-  }
-  .products {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .product-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
-    padding: 10px;
-    flex: 1 1 250px;
-  }
-  .product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .product-card h3 {
-    margin: 10px 0 6px;
-  }
-  footer.contact-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(125, 90, 54, 0.9);
-    color: white;
-    text-align: center;
-    padding: 10px 15px 15px;
-    font-size: 12px;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  footer.contact-footer .contact-info div {
-    margin: 2px 0;
-  }
-  footer.contact-footer .social-icons {
-    margin-top: 6px;
-  }
-  footer.contact-footer a {
-    margin: 0 8px;
-    display: inline-block;
-    color: #d1b594;
-    text-decoration: none;
-    font-weight: 600;
-    vertical-align: middle;
-  }
-  footer.contact-footer a:hover {
-    text-decoration: underline;
-  }
-  footer.contact-footer a img {
-    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
-    width: 22px;
-    height: 22px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Excellent Japanese Wood Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</title>
+    <meta property="og:title" content="Excellent Japanese Wood Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao">
+    <meta property="og:image" content="https://excellent-japanese-wood.com/assets/img/og_img.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://excellent-japanese-wood.com/assets/img/og_img.png">
+    <meta name="description" content="Hai phần ba đất đai của Nhật Bản là rừng, và gỗ đã được sử dụng trong đời sống hàng ngày từ xa xưa. Nhật Bản là đất nước có nền "văn hóa gỗ" ẩn sâu, bằng chứng là công trình kiến trúc bằng gỗ cổ nhất thế giới hiện còn tồn tại ở Nhật Bản.">
+    <meta property="og:description" content="Hai phần ba đất đai của Nhật Bản là rừng, và gỗ đã được sử dụng trong đời sống hàng ngày từ xa xưa. Nhật Bản là đất nước có nền "văn hóa gỗ" ẩn sâu, bằng chứng là công trình kiến trúc bằng gỗ cổ nhất thế giới hiện còn tồn tại ở Nhật Bản.">
+    <meta name="twitter:description" content="Hai phần ba đất đai của Nhật Bản là rừng, và gỗ đã được sử dụng trong đời sống hàng ngày từ xa xưa. Nhật Bản là đất nước có nền "văn hóa gỗ" ẩn sâu, bằng chứng là công trình kiến trúc bằng gỗ cổ nhất thế giới hiện còn tồn tại ở Nhật Bản.">
+    <meta name="keywords" content="林製材,日本の木材,日本の木材技術">
+    <link rel="icon" href="https://excellent-japanese-wood.com/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://excellent-japanese-wood.com/assets/img/apple-touch-icon.png">
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans+Thai&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/language/language.css">
+    
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+    <style>
+        /* Core Styles */
+        :root {
+            --main-color: #7d5a36;
+            --accent-color: #d1b594;
+            --dark-color: #3e3e3e;
+            --light-color: #faf7f1;
+            --orange-color: #ff9933;
+        }
+        
+        body {
+            font-family: 'Noto Sans', 'Noto Sans JP', sans-serif;
+            color: var(--dark-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            position: relative;
+            z-index: 100;
+            background-color: white;
+        }
+        
+        .logo_wrap {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .logo_wrap img {
+            height: 40px;
+        }
+        
+        .nav_area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav_area ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav_area li {
+            margin: 0 15px;
+        }
+        
+        .nav_area a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 0;
+            display: block;
+        }
+        
+        .language-button {
+            background-color: black;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        /* Top Hero Section */
+        .top_hero {
+            position: relative;
+            height: 680px;
+            overflow: hidden;
+        }
+        
+        .top_hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero_content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 80%;
+        }
+        
+        .hero_content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero_content h2 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-top: 10px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        /* Section Styles */
+        .section_container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .section_subtitle {
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        /* Japan Wood & Craftsmanship Section */
+        .japan_wood_section {
+            margin: 40px auto;
+            max-width: 900px;
+            padding: 30px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        
+        .japan_wood_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .japan_wood_content {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .exhibition_item {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .exhibition_title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .exhibition_date {
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        
+        .exhibition_place {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Wooden Building Section */
+        .wooden_building {
+            display: flex;
+            align-items: center;
+            margin: 60px auto;
+            max-width: 1100px;
+        }
+        
+        .wooden_building_image {
+            flex: 0 0 40%;
+        }
+        
+        .wooden_building_image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .wooden_building_content {
+            flex: 0 0 60%;
+            padding: 0 40px;
+        }
+        
+        .wooden_building_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: var(--main-color);
+        }
+        
+        .wooden_building_text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        /* Movie Section */
+        .movie_section {
+            background-image: url(https://images.unsplash.com/photo-1569185835836-a9683f3c72a4?q=80&w=1600&auto=format&fit=crop);
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .movie_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .movie_subtitle {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .movie_container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .video_player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: black;
+        }
+        
+        .video_btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Wood Processing Technology */
+        .technology_section {
+            padding: 60px 20px;
+        }
+        
+        .technology_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .technology_subtitle {
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .technology_item {
+            display: flex;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .technology_image {
+            flex: 0 0 50%;
+        }
+        
+        .technology_image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .technology_content {
+            flex: 0 0 50%;
+            padding: 0 30px;
+        }
+        
+        .technology_item_number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--orange-color);
+            margin-bottom: 15px;
+        }
+        
+        .technology_item_title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .technology_item_text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .read_more {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 30px;
+            background-color: var(--orange-color);
+            color: white;
+            text-decoration: none;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        
+        .read_more:hover {
+            background-color: #e67300;
+        }
+        
+        .read_more::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid white;
+            border-right: 2px solid white;
+            transform: rotate(45deg);
+        }
+        
+        /* Digital Pamphlet */
+        .digital_pamphlet {
+            text-align: center;
+            margin: 60px auto;
+            max-width: 1100px;
+            padding: 40px 20px;
+            background-image: url(https://images.unsplash.com/photo-1562313544-8f89bf1f4a49?q=80&w=1600&auto=format&fit=crop);
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .pamphlet_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .pamphlet_subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        /* Column Section */
+        .column_section {
+            padding: 60px 20px;
+            background-color: var(--light-color);
+        }
+        
+        .column_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .column_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .column_item {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .column_image {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .column_content {
+            padding: 15px;
+        }
+        
+        .column_item_title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #533059;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .footer_logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer_logo img {
+            height: 40px;
+        }
+        
+        .footer_nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer_nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.85rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* To Top Button */
+        .to_top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        .to_top::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-top: 3px solid white;
+            border-right: 3px solid white;
+            transform: rotate(-45deg);
+            margin-top: 5px;
+        }
+    </style>
 </head>
-<body>
-  <div class="overlay">
+
+<body id="page_top" class="lang_vi language">
     <header>
-      <div class="logo" id="logo-text">
-        <a href="/donglb/" id="logo-link" style="color: inherit; text-decoration: none;">木工場ファミリー</a>
-      </div>
-      <nav>
-        <div class="lang-dropdown">
-          <select id="languageSelect" onchange="changeLang(this.value)">
-            <option value="jp">日本語</option>
-            <option value="vn">Tiếng Việt</option>
-          </select>
+        <div class="logo_wrap">
+            <a href="/">
+                <img src="https://excellent-japanese-wood.com/assets/img/logo.png" alt="JAPANESE FOREST" />
+            </a>
         </div>
-        <ul id="menu-list">
-          <li><a href="/donglb/" data-key="home">ホーム</a></li>
-          <li><a href="/donglb/about.html" data-key="about">会社概要</a></li>
-          <li><a href="/donglb/products.html" data-key="products">製品紹介</a></li>
-          <li><a href="/donglb/contact.html" data-key="contact">お問い合わせ</a></li>
-        </ul>
-      </nav>
+        <div class="nav_area">
+            <ul>
+                <li><a href="/">Gỗ Nhật Bản</a></li>
+                <li><a href="/technique">Kỹ thuật về gỗ của Nhật Bản</a></li>
+                <li><a href="/video">Video gỗ Nhật Bản</a></li>
+                <li><a href="/history">Lịi tích kỹ thuật gỗ</a></li>
+                <li><a href="/value">Giới thiệu các công ty Nhật Bản</a></li>
+            </ul>
+            <div class="language_select">
+                <button class="language-button">LANGUAGE ▼</button>
+            </div>
+        </div>
     </header>
 
-    <section class="slider" aria-label="Image slideshow">
-  <!-- Thay thế phần slides -->
-<div class="slides">
-  <!-- Ảnh 1 - Ancient Japanese Forest -->
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1545569731-20de6aa69892?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80')"></div>
-  
-  <!-- Ảnh 2 - Japanese Cedar Forest Path -->
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80')"></div>
-  
-  <!-- Ảnh 3 - Traditional Japanese Wooden Temple -->
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80')"></div>
-  
-  <!-- Ảnh 4 - Japanese Bamboo Forest -->
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1503754163129-a882fe80fa2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80')"></div>
-</div>
-  <div class="slide-text">
-    <h1 id="slide-title">Excellent Japanese Wood</h1>
-    <p id="slide-desc">Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
-  </div>
-  <div class="dots" aria-label="Slide controls"></div>
-  <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
-    <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
-  </button>
-</section>
+    <div class="nav_hamburger"></div>
 
     <main>
-      <div id="jp" class="lang-content active">
-        <h2>注目の商品</h2>
-        <div class="products">
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="製品1" />
-            <h3>ナチュラルウッドチェア</h3>
-            <p>使いやすいデザイン、最高品質のオーク材を使用。</p>
-          </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="製品2" />
-            <h3>日本風ダイニングテーブル</h3>
-            <p>丈夫で美しい、日本スタイルのテーブル。</p>
-          </div>
-          <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="製品3" />
-            <h3>多機能収納キャビネット</h3>
-            <p>たくさんの収納スペースを持つ便利なキャビネット。</p>
-          </div>
-        </div>
-      </div>
+        <!-- Hero Section -->
+        <section class="top_hero">
+            <img src="https://images.unsplash.com/photo-1545569731-20de6aa69892?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80" alt="Japanese Forest">
+            <div class="hero_content">
+                <h1>Excellent<br>Japanese Wood</h1>
+                <h2>Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</h2>
+            </div>
+        </section>
 
-      <div id="vn" class="lang-content">
-        <h2>Sản phẩm nổi bật</h2>
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
-          <h3>Ghế gỗ tự nhiên</h3>
-          <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
-        </div><div class="product-card">
-          <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
-          <h3>Bàn ăn phong cách Nhật</h3>
-          <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
-        </div><div class="product-card">
-          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
-          <h3>Tủ đựng đồ đa năng</h3>
-          <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
-        </div>
-      </div>
-    </main>
+        <!-- Japan Wood & Craftsmanship Section -->
+        <section class="japan_wood_section">
+            <h2 class="japan_wood_title">Japan Wood × Craftsmanship</h2>
+            <div class="japan_wood_content">
+                Sự khai thác đặc biệt phẩm gỗ của Nhật Bản sẽ được tổ chức tại các khu vực quốc tế tại Tokyo, Osaka, Osaka, Hokkaido và Aichi. Bạn có thể thấy các "nghe" "thửa" về "kỹ nghiệp" kỹ thuật thông qua nghệ nhân và kỹ thuật gỗ công ưu tiến nhật "khương gián gỗ" khung Pháp tiền quan hình kỹ thuật gỗ thuộc quốc trung lanh, các phi kim liên xự định hình, cây bút mài tay, cây hoạt gợt thực tại, chợ khổng hồ kỹ chuyên hoá trị hữa huơn banh sanh xup. Tuy hương ban có thể thuê quan trọng thông trong voi nhiệt thục quả trong lề gỗ nguyện hơn.
+            </div>
 
-    <footer class="contact-footer" aria-label="Liên hệ / Contact information">
-      <div class="contact-info" id="contactInfo"></div>
-      <div class="social-icons">
-        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-          <img src="https://img.icons8.com/ios-filled/24/000000/facebook-new.png" alt="Facebook" />
-        </a>
-        <a href="https://line.me/en/" target="_blank" rel="noopener" aria-label="Line">
-          <img src="https://img.icons8.com/ios-filled/24/000000/line-me.png" alt="Line" />
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="https://img.icons8.com/ios-filled/24/000000/instagram-new.png" alt="Instagram" />
-        </a>
-      </div>
-      <p id="footer-copyright">
-        © 2025 木工場ファミリー All Rights Reserved.
-      </p>
-    </footer>
-  </div>
+            <div class="exhibition_item">
+                <div class="exhibition_title">Sân bay Quốc tế Tokyo</div>
+                <div class="exhibition_date">Ngày 21 tháng 10 năm 2024 - Ngày 3 tháng 11 năm 2024</div>
+                <div class="exhibition_place">Địa điểm tổ chức: Haneda Wing 5 hall giai đoạn 3</div>
+            </div>
 
-<script>
-  const slidesContainer = document.querySelector('.slides');
-  const dotsContainer = document.querySelector('.dots');
-  const backToTopBtn = document.getElementById('backToTop');
-  const slideTitle = document.getElementById('slide-title');
-  const slideDesc = document.getElementById('slide-desc');
-  const langSelect = document.getElementById('languageSelect');
+            <div class="exhibition_item">
+                <div class="exhibition_title">Sân bay Quốc tế Kansai</div>
+                <div class="exhibition_date">Ngày 18 tháng 11 năm 2024 - Ngày 1 tháng 12 năm 2024</div>
+                <div class="exhibition_place">Địa điểm tổ chức: Tầng Honda 68 Kansai Hall</div>
+            </div>
 
-  // Sửa slidesCount thành 4
-const slidesCount = 4;
+            <div class="exhibition_item">
+                <div class="exhibition_title">Sân bay Quốc tế Narita</div>
+                <div class="exhibition_date">Ngày 9 tháng 12 năm 2024 - Ngày 22 tháng 12 năm 2024</div>
+                <div class="exhibition_place">Địa điểm tổ chức: Phụ Nam Visitor Service Center - Tầng 1 Nhà ga số 1</div>
+            </div>
 
-// Cập nhật nội dung slider
-const slidesText = {
-  jp: [
-    {title: "自然と調和した木造建築", desc: "緑に包まれた伝統の美"},
-    {title: "職人の技が光る工房", desc: "丁寧な手仕事の現場"},
-    {title: "持続可能な森林資源", desc: "未来へつなぐ森づくり"},
-    {title: "上質な木の温もり", desc: "自然素材の心地よさ"}
-  ],
-  vn: [
-    {title: "Kiến trúc gỗ hòa hợp thiên nhiên", desc: "Vẻ đẹp truyền thống giữa màu xanh"},
-    {title: "Xưởng sản xuất tinh xảo", desc: "Nơi nghệ nhân thể hiện tài hoa"},
-    {title: "Nguồn nguyên liệu bền vững", desc: "Rừng xanh cho thế hệ tương lai"},
-    {title: "Sự ấm áp từ gỗ tự nhiên", desc: "Cảm nhận chất liệu thiên nhiên"}
-  ]
-};
+            <div class="exhibition_item">
+                <div class="exhibition_title">Sân bay Quốc tế Chitose mới</div>
+                <div class="exhibition_date">Ngày 10 tháng 1 năm 2025 - Ngày 23 tháng 1 năm 2025</div>
+                <div class="exhibition_place">Địa điểm tổ chức: Center Plaza - Tầng 2 • Trung tâm bay Hang thuê</div>
+            </div>
 
-  let currentIndex = 0;
-  let lang = langSelect.value;
+            <div class="exhibition_item">
+                <div class="exhibition_title">Sân bay Quốc tế Chubu Centrair</div>
+                <div class="exhibition_date">Ngày 1 tháng 2 năm 2025 - Ngày 14 tháng 2 năm 2025</div>
+                <div class="exhibition_place">Địa điểm tổ chức: Tầng sân thượng - Ga quốc tế</div>
+            </div>
+        </section>
 
-  function setSlidePosition() {
-    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
+        <!-- The oldest wooden building -->
+        <section class="wooden_building">
+            <div class="wooden_building_image">
+                <img src="https://images.unsplash.com/photo-1614566666325-841465874072?q=80&w=600&auto=format&fit=crop" alt="Ancient Japanese Temple">
+            </div>
+            <div class="wooden_building_content">
+                <h2 class="wooden_building_title">The oldest<br>wooden building<br>in the world</h2>
+                <div class="wooden_building_text">
+                    Hai phần ba đất đai của Nhật Bản là rừng, và gỗ đã được sử dụng trong đời sống hàng ngày từ xa xưa. Nhật Bản là đất nước có nền văn hóa gỗ ăn sâu, bằng chứng là công trình kiến trúc bằng gỗ cổ nhất thế giới hiện còn tồn tại ở Nhật Bản.
+                    <br><br>
+                    Chúng tôi muốn giới thiệu về các sản phẩm tinh tế từ gỗ Nhật Bản và các phương pháp tân tiến gỗ của Nhật Bản, cũng như "văn hóa gỗ" bền vững đã là đặc sản phẩm tiêu tụ của Nhật Bản có giá trị gỗ tăng cao như sử dụng các kỹ thuật mùi, chúng hun thu ngư gỗ trình bày cần vụ.
+                </div>
+            </div>
+        </section>
 
-  function updateText() {
-    if(slideTitle && slideDesc){
-      slideTitle.innerHTML = slidesText[lang][currentIndex].title;
-      slideDesc.textContent = slidesText[lang][currentIndex].desc;
-    }
-  }
+        <!-- Movie Section -->
+        <section class="movie_section">
+            <div class="section_container">
+                <h2 class="movie_title">Movie</h2>
+                <p class="movie_subtitle">Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao được truyền tải qua video</p>
+                
+                <div class="movie_container">
+                    <div class="video_player">
+                        <img src="https://images.unsplash.com/photo-1575669546728-5275584a1f8d?q=80&w=800&auto=format&fit=crop" alt="Video thumbnail" style="width:100%; height:100%; object-fit:cover;">
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
+                            <img src="https://excellent-japanese-wood.com/assets/img/play.png" alt="Play button" style="width:60px; height:60px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="video_btn">Bấm vào đây để xem danh sách video</a>
+            </div>
+        </section>
 
-  function updateDots() {
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[currentIndex].classList.add('active');
-  }
-
-  function goToSlide(index) {
-    if(index < 0) index = slidesCount -1;
-    if(index >= slidesCount) index = 0;
-    currentIndex = index;
-    setSlidePosition();
-    updateText();
-    updateDots();
-  }
-
-  function createDots() {
-    for(let i = 0; i < slidesCount; i++) {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if(i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  window.addEventListener('scroll', () => {
-    if(backToTopBtn){
-      backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-    }
-  });
-  if(backToTopBtn){
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-  }
-
-  langSelect?.addEventListener('change', (e) => {
-    lang = e.target.value;
-    updateText();
-  });
-
-  window.onload = () => {
-    createDots();
-    goToSlide(0);
-    lang = langSelect?.value || 'jp';
-    updateText();
-
-    const contactContent = {
-      jp: `
-        <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
-        <div>住所：<a href="https://www.google.com/maps/search/?api=1&query=abc通り+ハノイ市" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">abc通り、ハノイ市</a></div>
-        <div>電話: 0909 123 456</div>`
-      ,
-      vn: `
-        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
-        <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
-        <div>Điện thoại: 0909 123 456</div>`
-    };
-
-    const logoText = {
-      jp: "木工場ファミリー",
-      vn: "Đồ gỗ MiDo"
-    };
-
-    const menuText = {
-      jp: ["ホーム", "会社概要", "製品紹介", "お問い合わせ"],
-      vn: ["Trang Chủ", "Giới Thiệu", "Sản Phẩm", "Liên Hệ"]
-    };
-
-    const copyrightText = {
-      jp: "© 2025 木工場ファミリー All Rights Reserved.",
-      vn: "© 2025 Gia Đình Xưởng Gỗ Bản Quyền Đã Được Bảo Lưu."
-    };
-
-    function changeLang(lang) {
-      if(lang === 'jp') {
-        document.getElementById('jp').classList.add('active');
-        document.getElementById('vn').classList.remove('active');
-      } else {
-        document.getElementById('vn').classList.add('active');
-        document.getElementById('jp').classList.remove('active');
-      }
-      document.getElementById('contactInfo').innerHTML = contactContent[lang];
-      document.getElementById('logo-link').textContent = logoText[lang];
-      const menuItems = document.querySelectorAll('#menu-list li a');
-      menuItems.forEach((item, index) => {
-        item.textContent = menuText[lang][index];
-      });
-      document.getElementById('footer-copyright').textContent = copyrightText[lang];
-    }
-    changeLang(lang);
-  };
-</script>
-</body>
-</html>
+        <!-- Wood Processing Technology -->
+        <section class="technology_section">
+            <div class="section_container">
+                <h2 class="technology_title">Wood processing technology</h2>
+                <p class="technology_subtitle">Kỹ thuật chế tạo n gỗ đúng tụ háo của Nhật Bản</p>
+                
+                <div class="technology_item">
+                    <div class="technology_image">
+                        <img src="https://images.unsplash.com/photo-1569185835836-a9683f3c72a4?q=80&w=600&auto=format&fit=crop" alt="Japanese Forest">
+                    </div>
+                    <div class="technology_content">
+                        <div class="technology_item_number">01</div>
+                        <h3 class="technology_item_title">Gỗ Nhật Bản</h3>
+                        <div class="technology_item_text">
+                            Nhật Bản là một trong những quốc gia có nhiều rừng nhất trên thế giới với 68% diện tích đất là rừng. Bên cạnh đó, công trình kiến trúc bằng gỗ lâu đời nhất thế giới ở Nhật Bản. Người ta còn có các đặc sản thế giới ở Nhật Bản có liên quan chặt chẽ với đặc tánh đây.
+                        </div>
+                        <a href="#" class="read_more">READ MORE</a>
+                    </div>
+                </div>
+                
+                <div class="technology_item">
+                    <div class="technology_content">
+                        <div class="technology_item_number">02</div>
+                        <h3 class="technology_item_title">Kỹ thuật về gỗ của Nhật Bản</h3>
+                        <div class="technology_item_text">
+                            Từ xưa Nhật Bản, một đất nước thường xuyên bị động đất nên tạo ra được những công trình kiến trúc lâ mỹ gỗ bền đến hơn 1,400 năm. Các công trình kiến trúc của Nhật Bản nổi tiếng với kỹ thuật "xâm hoa gỗ". Chúng tôi sẽ giới thiệu những kỹ thuật tạo ra kuk đa"y, đồng thởi tự nhiên phát hiện thao chu tinh tậu, klu chảng đông dứa v.a. công nghệ chống mối mục v.v.
+                        </div>
+                        <a href="#" class="read_more">READ MORE</a>
+                    </div>
+                    <div class="technology_image">
+                        <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?q=80&w=600&auto=format&fit=crop" alt="Japanese Woodworker">
