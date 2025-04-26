@@ -347,20 +347,24 @@
   const slideDesc = document.getElementById('slide-desc');
   const langSelect = document.getElementById('languageSelect');
 
-  const slidesCount = 3;
+  // Thay đổi từ 3 lên 4 slides
+const slidesCount = 4;
 
-  const slidesText = {
-    jp: [
-      {title: "Excellent Japanese Wood", desc: "日本製木材の魅力と価値の向上"},
-      {title: "Excellent Japanese Wood", desc: "日本製木材の魅力と価値の向上"},
-      {title: "Excellent Japanese Wood", desc: "日本製木材の魅力と価値の向上"}
-    ],
-    vn: [
-      {title: "Excellent Japanese Wood", desc: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"},
-      {title: "Excellent Japanese Wood", desc: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"},
-      {title: "Excellent Japanese Wood", desc: "Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao"}
-    ]
-  };
+// Cập nhật text cho slide
+const slidesText = {
+  jp: [
+    {title: "日本の伝統的木造建築", desc: "伝統技術と現代デザインの融合"},
+    {title: "職人による丁寧な加工", desc: "熟練の技術で木材を最高の状態に"},
+    {title: "厳選された天然木材", desc: "持続可能な森林管理のもと育成"},
+    {title: "上質な木製家具", desc: "日本の美意識を形にした製品群"}
+  ],
+  vn: [
+    {title: "Kiến trúc gỗ truyền thống Nhật Bản", desc: "Sự kết hợp hài hòa giữa truyền thống và hiện đại"},
+    {title: "Gia công tỉ mỉ bởi nghệ nhân", desc: "Biến nguyên liệu thô thành tác phẩm nghệ thuật"},
+    {title: "Nguyên liệu gỗ tự nhiên", desc: "Được khai thác từ rừng trồng bền vững"},
+    {title: "Sản phẩm nội thất cao cấp", desc: "Tinh hoa nghề mộc Nhật Bản"}
+  ]
+};
 
   let currentIndex = 0;
   let lang = langSelect.value;
