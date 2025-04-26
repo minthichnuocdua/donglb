@@ -67,11 +67,13 @@
     background-color: #5a3f22;
   }
 
-  /* Slider Styles */
+  /* Slider container */
   .slider {
     position: relative;
-    width: 100%;
-    height: 500px;
+    width: 100vw;
+    max-width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
     overflow: hidden;
   }
   .slides {
@@ -89,22 +91,27 @@
   }
   .slide-text {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: #7d5a36;
     text-align: center;
     z-index: 10;
     pointer-events: none;
     user-select: none;
+    text-shadow:
+       1px 1px 2px rgba(255,255,255,0.8),
+       0 0 0.5em rgba(0,0,0,0.6),
+       0 0 0.2em rgba(0,0,0,0.3);
   }
   .slide-text h1 {
-    font-size: 3rem;
-    letter-spacing: 0.12em;
-    margin-bottom: 15px;
+    font-size: 3.8rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8em;
+    font-weight: 700;
   }
   .slide-text p {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     margin: 0;
   }
@@ -112,23 +119,24 @@
   /* Dots navigation */
   .dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 12px;
+    gap: 15px;
     z-index: 10;
   }
   .dot {
-    width: 14px;
-    height: 14px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.4);
     cursor: pointer;
     transition: background-color 0.3s;
   }
   .dot.active {
     background: #d1b594;
+    box-shadow: 0 0 5px #d1b594;
   }
 
   /* Back to top button */
@@ -144,7 +152,7 @@
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     z-index: 1005;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s;
@@ -257,9 +265,9 @@
 
     <section class="slider" aria-label="Image slideshow">
       <div class="slides">
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1563201517-519ad92b40a6?auto=format&fit=crop&w=1400&q=80')"></div>
-        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522728646934-e51a948d5c74?auto=format&fit=crop&w=1400&q=80')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542326237-7a3153438369?auto=format&fit=crop&w=1920&q=95')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1509498043-db27b440d6a0?auto=format&fit=crop&w=1920&q=95')"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=1920&q=95')"></div>
       </div>
       <div class="slide-text">
         <h1 id="slide-title">Excellent Japanese Wood</h1>
@@ -361,11 +369,12 @@
   }
 
   function updateText() {
-    // Chữ trên slider giữ nguyên nơi cố định, update theo ngôn ngữ và slide
     const titleEl = document.getElementById('slide-title');
     const descEl = document.getElementById('slide-desc');
-    titleEl.innerHTML = slidesText[lang][currentIndex].title;
-    descEl.textContent = slidesText[lang][currentIndex].desc;
+    if(titleEl && descEl){
+      titleEl.innerHTML = slidesText[lang][currentIndex].title;
+      descEl.textContent = slidesText[lang][currentIndex].desc;
+    }
   }
 
   function updateDots() {
@@ -393,16 +402,18 @@
     }
   }
 
-  // Nút lên đầu trang
   window.addEventListener('scroll', () => {
-    backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    if(backToTopBtn){
+      backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    }
   });
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  });
+  if(backToTopBtn){
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  }
 
-  // Ngôn ngữ
-  langSelect.addEventListener('change', (e) => {
+  langSelect?.addEventListener('change', (e) => {
     lang = e.target.value;
     updateText();
   });
@@ -410,17 +421,15 @@
   window.onload = () => {
     createDots();
     goToSlide(0);
-    
-    // Khởi tạo tiếng mặc định
-    lang = langSelect.value || 'jp';
+    lang = langSelect?.value || 'jp';
     updateText();
 
-    // Cập nhật các phần menu, footer, contact info theo ngôn ngữ
     const contactContent = {
       jp: `
         <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
         <div>住所：<a href="https://www.google.com/maps/search/?api=1&query=abc通り+ハノイ市" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">abc通り、ハノイ市</a></div>
-        <div>電話: 0909 123 456</div>`,
+        <div>電話: 0909 123 456</div>`
+      ,
       vn: `
         <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
         <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
