@@ -3,37 +3,36 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>会社概要 - Giới Thiệu</title>
+<title>木工場ファミリー</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
 <style>
   body {
-    margin: 0;
+    margin: 0;  
     font-family: 'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;
-    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
     color: #3e3e3e;
     padding-bottom: 100px;
   }
   .overlay {
-    background-color: rgba(250, 249, 246, 0.95);
     min-height: 100vh;
+    background: #faf7f1;
     display: flex;
     flex-direction: column;
   }
   header {
     background-color: rgba(125, 90, 54, 0.9);
+    color: white;
     padding: 15px 30px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    color: white;
+    align-items: center;
+    z-index: 1001;
+    position: relative;
   }
-  .logo {
+  .logo a {
+    color: inherit;
     font-weight: bold;
     font-size: 1.5rem;
+    text-decoration: none;
   }
   nav {
     display: flex;
@@ -44,7 +43,8 @@
     list-style: none;
     display: flex;
     gap: 25px;
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
   }
   nav ul li a {
     color: white;
@@ -66,48 +66,140 @@
   .lang-dropdown select:hover {
     background-color: #5a3f22;
   }
+
+  /* Slider container */
+  .slider {
+    position: relative;
+    width: 100vw;
+    max-width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .slides {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+    height: 100%;
+    width: 300%;
+  }
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    flex-shrink: 0;
+  }
+  .slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #7d5a36;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+    user-select: none;
+    text-shadow:
+       1px 1px 2px rgba(255,255,255,0.8),
+       0 0 0.5em rgba(0,0,0,0.6),
+       0 0 0.2em rgba(0,0,0,0.3);
+  }
+  .slide-text h1 {
+    font-size: 3.8rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8em;
+    font-weight: 700;
+  }
+  .slide-text p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* Dots navigation */
+  .dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+  }
+  .dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .dot.active {
+    background: #d1b594;
+    box-shadow: 0 0 5px #d1b594;
+  }
+
+  /* Back to top button */
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #7d5a36;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 1005;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  #backToTop:hover {
+    background-color: #5a3f22;
+  }
+  #backToTop svg {
+    fill: white;
+    width: 24px;
+    height: 24px;
+  }
+
   main {
-    flex-grow: 1;
-    max-width: 900px;
-    margin: 40px auto 0;
-    padding: 30px 25px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    color: #3e3e3e;
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 15px;
+  }
+  .lang-content {
+    display: none;
+  }
+  .lang-content.active {
+    display: block;
   }
   h1, h2 {
     color: #7d5a36;
-    margin-bottom: 25px;
-    text-align: left;
   }
-  p {
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    text-align: justify;
-  }
-  .section {
-    margin-bottom: 50px;
-  }
-  .leader {
+  .products {
     display: flex;
-    gap: 30px;
-    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
-  .leader img {
-    width: 200px;
-    border-radius: 8px;
+  .product-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 0.1);
+    padding: 10px;
+    flex: 1 1 250px;
+  }
+  .product-card img {
+    width: 100%;
+    height: 150px;
     object-fit: cover;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    border-radius: 8px;
   }
-  .leader-info h3 {
-    margin-top: 0;
-    color: #5e432f;
-  }
-  .leader-info p {
-    font-size: 1rem;
-    margin-bottom: 12px;
+  .product-card h3 {
+    margin: 10px 0 6px;
   }
   footer.contact-footer {
     position: fixed;
@@ -117,38 +209,35 @@
     background-color: rgba(125, 90, 54, 0.9);
     color: white;
     text-align: center;
-    padding: 12px 15px 15px;
+    padding: 10px 15px 15px;
     font-size: 12px;
-    box-shadow: 0 -3px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer.contact-footer .contact-info div {
+    margin: 2px 0;
+  }
+  footer.contact-footer .social-icons {
+    margin-top: 6px;
   }
   footer.contact-footer a {
+    margin: 0 8px;
+    display: inline-block;
     color: #d1b594;
     text-decoration: none;
-    margin: 0 10px;
     font-weight: 600;
+    vertical-align: middle;
   }
   footer.contact-footer a:hover {
     text-decoration: underline;
   }
-  footer.contact-footer .social-icons {
-    margin: 8px 0;
-  }
-  footer.contact-footer .social-icons img {
+  footer.contact-footer a img {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
     width: 22px;
     height: 22px;
-    filter: brightness(0) saturate(100%) invert(59%) sepia(7%) saturate(0%) hue-rotate(147deg) brightness(92%) contrast(86%);
-  }
-  @media(max-width:800px) {
-    .leader {
-      flex-direction: column;
-      text-align: center;
-    }
-    .leader img {
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto 20px;
-    }
   }
 </style>
 </head>
@@ -156,7 +245,7 @@
   <div class="overlay">
     <header>
       <div class="logo" id="logo-text">
-        <a href="/donglb/" id="logo-link" style="color:inherit; text-decoration:none;">木工場ファミリー</a>
+        <a href="/donglb/" id="logo-link" style="color: inherit; text-decoration: none;">木工場ファミリー</a>
       </div>
       <nav>
         <div class="lang-dropdown">
@@ -166,60 +255,79 @@
           </select>
         </div>
         <ul id="menu-list">
-          <li><a href="/donglb/index.html" data-key="home">ホーム</a></li>
+          <li><a href="/donglb/" data-key="home">ホーム</a></li>
           <li><a href="/donglb/about.html" data-key="about">会社概要</a></li>
           <li><a href="/donglb/products.html" data-key="products">製品紹介</a></li>
           <li><a href="/donglb/contact.html" data-key="contact">お問い合わせ</a></li>
         </ul>
       </nav>
     </header>
-    
+
+    <section class="slider" aria-label="Image slideshow">
+  <!-- Thay thế phần slides -->
+<div class="slides">
+  <!-- Ảnh 1 - Nhà gỗ trong rừng -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600566753093-8af25e1e7d3d?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 2 - Xưởng gỗ xanh mát -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 3 - Rừng tre Nhật -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+  
+  <!-- Ảnh 4 - Nội thất gỗ tự nhiên -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1920&q=80&ixlib=rb-4.0.3')"></div>
+</div>
+  <div class="slide-text">
+    <h1 id="slide-title">Excellent Japanese Wood</h1>
+    <p id="slide-desc">Sức hấp dẫn của gỗ Nhật Bản có giá trị gia tăng cao</p>
+  </div>
+  <div class="dots" aria-label="Slide controls"></div>
+  <button id="backToTop" aria-label="Back to top" title="Lên đầu trang" type="button" style="display:none;">
+    <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
+  </button>
+</section>
+
     <main>
       <div id="jp" class="lang-content active">
-        <h1>会社概要</h1>
-        <section class="section" id="factory-info-jp">
-          <h2>工場概要</h2>
-          <p>Đồ gỗ MiDoは10年以上の実績を持つ信頼の木工所で、日本や海外市場に高品質な木製家具を提供しています。</p>
-          <p>熟練職人や最新の機械設備、厳密な製造プロセスにより、最高品質の製品をお届けしています。</p>
-          <p>私たちは自然素材の活用と伝統的な技術の融合に誇りを持ち、お客様に満足いただける製品を作り出します。</p>
-        </section>
-        <section class="section" id="leader-jp">
-          <h2>代表者紹介</h2>
-          <div class="leader">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="代表者" />
-            <div class="leader-info">
-              <h3>グエン・バン・A</h3>
-              <p>私たちの創業者であり、15年以上にわたり高級木製品の製造を率いてきました。</p>
-              <p>自然素材の知識と伝統的な工法に加え、最新技術を取り入れています。</p>
-              <p>お客様への満足度とサービスの質を常に最優先にしています。</p>
-            </div>
+        <h2>注目の商品</h2>
+        <div class="products">
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="製品1" />
+            <h3>ナチュラルウッドチェア</h3>
+            <p>使いやすいデザイン、最高品質のオーク材を使用。</p>
           </div>
-        </section>
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="製品2" />
+            <h3>日本風ダイニングテーブル</h3>
+            <p>丈夫で美しい、日本スタイルのテーブル。</p>
+          </div>
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="製品3" />
+            <h3>多機能収納キャビネット</h3>
+            <p>たくさんの収納スペースを持つ便利なキャビネット。</p>
+          </div>
+        </div>
       </div>
-      
-      <div id="vn" class="lang-content" style="display:none;">
-        <h1>Giới Thiệu</h1>
-        <section class="section" id="factory-info-vn">
-          <h2>Cơ sở sản xuất</h2>
-          <p>Đồ gỗ MiDo là một cơ sở sản xuất đồ gỗ uy tín với hơn 10 năm kinh nghiệm, chuyên sản xuất các sản phẩm nội thất gỗ chất lượng cao phục vụ thị trường Nhật Bản và quốc tế.</p>
-          <p>Chúng tôi sở hữu đội ngũ thợ lành nghề, trang thiết bị hiện đại và quy trình sản xuất nghiêm ngặt để đảm bảo từng sản phẩm đạt chuẩn cao nhất.</p>
-          <p>Chúng tôi tự hào kết hợp nguyên liệu tự nhiên và kỹ thuật truyền thống để mang đến sản phẩm hoàn hảo cho khách hàng.</p>
-        </section>
-        <section class="section" id="leader-vn">
-          <h2>Người đại diện</h2>
-          <div class="leader">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Người đại diện" />
-            <div class="leader-info">
-              <h3>Nguyễn Văn A</h3>
-              <p>Người sáng lập và quản lý xưởng gỗ MiDo, với hơn 15 năm kinh nghiệm trong ngành sản xuất đồ gỗ cao cấp.</p>
-              <p>Ông có kiến thức sâu rộng về vật liệu tự nhiên và kỹ thuật chế tác truyền thống kết hợp công nghệ hiện đại.</p>
-              <p>Cam kết mang đến sản phẩm hài lòng và dịch vụ tận tâm nhất cho khách hàng.</p>
-            </div>
-          </div>
-        </section>
+
+      <div id="vn" class="lang-content">
+        <h2>Sản phẩm nổi bật</h2>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 1" />
+          <h3>Ghế gỗ tự nhiên</h3>
+          <p>Thiết kế tiện dụng, gỗ sồi tự nhiên chất lượng cao.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1509228627152-2fb387fda2be?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 2" />
+          <h3>Bàn ăn phong cách Nhật</h3>
+          <p>Bàn ăn kiểu Nhật, kết cấu chắc chắn, bền đẹp.</p>
+        </div><div class="product-card">
+          <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Sản phẩm 3" />
+          <h3>Tủ đựng đồ đa năng</h3>
+          <p>Tủ nhiều ngăn, tiện lợi cho gia đình.</p>
+        </div>
       </div>
     </main>
-    
+
     <footer class="contact-footer" aria-label="Liên hệ / Contact information">
       <div class="contact-info" id="contactInfo"></div>
       <div class="social-icons">
@@ -233,35 +341,127 @@
           <img src="https://img.icons8.com/ios-filled/24/000000/instagram-new.png" alt="Instagram" />
         </a>
       </div>
-      <p id="footer-copyright"></p>
+      <p id="footer-copyright">
+        © 2025 木工場ファミリー All Rights Reserved.
+      </p>
     </footer>
   </div>
-  
-  <script>
+
+<script>
+  const slidesContainer = document.querySelector('.slides');
+  const dotsContainer = document.querySelector('.dots');
+  const backToTopBtn = document.getElementById('backToTop');
+  const slideTitle = document.getElementById('slide-title');
+  const slideDesc = document.getElementById('slide-desc');
+  const langSelect = document.getElementById('languageSelect');
+
+  // Thay đổi từ 3 lên 4 slides
+const slidesCount = 4;
+
+// Cập nhật text cho slide
+const slidesText = {
+  jp: [
+    {title: "日本の伝統的木造建築", desc: "伝統技術と現代デザインの融合"},
+    {title: "職人による丁寧な加工", desc: "熟練の技術で木材を最高の状態に"},
+    {title: "厳選された天然木材", desc: "持続可能な森林管理のもと育成"},
+    {title: "上質な木製家具", desc: "日本の美意識を形にした製品群"}
+  ],
+  vn: [
+    {title: "Kiến trúc gỗ truyền thống Nhật Bản", desc: "Sự kết hợp hài hòa giữa truyền thống và hiện đại"},
+    {title: "Gia công tỉ mỉ bởi nghệ nhân", desc: "Biến nguyên liệu thô thành tác phẩm nghệ thuật"},
+    {title: "Nguyên liệu gỗ tự nhiên", desc: "Được khai thác từ rừng trồng bền vững"},
+    {title: "Sản phẩm nội thất cao cấp", desc: "Tinh hoa nghề mộc Nhật Bản"}
+  ]
+};
+
+  let currentIndex = 0;
+  let lang = langSelect.value;
+
+  function setSlidePosition() {
+    slidesContainer.style.transform = translateX(-${currentIndex * 100}%);
+  }
+
+  function updateText() {
+    if(slideTitle && slideDesc){
+      slideTitle.innerHTML = slidesText[lang][currentIndex].title;
+      slideDesc.textContent = slidesText[lang][currentIndex].desc;
+    }
+  }
+
+  function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
+  }
+
+  function goToSlide(index) {
+    if(index < 0) index = slidesCount -1;
+    if(index >= slidesCount) index = 0;
+    currentIndex = index;
+    setSlidePosition();
+    updateText();
+    updateDots();
+  }
+
+  function createDots() {
+    for(let i = 0; i < slidesCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if(i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    if(backToTopBtn){
+      backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    }
+  });
+  if(backToTopBtn){
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  }
+
+  langSelect?.addEventListener('change', (e) => {
+    lang = e.target.value;
+    updateText();
+  });
+
+  window.onload = () => {
+    createDots();
+    goToSlide(0);
+    lang = langSelect?.value || 'jp';
+    updateText();
+
     const contactContent = {
       jp: `
         <div>住所: <a href="https://www.google.com/maps/search/?api=1&query=ベトナム+モク区+木通り123番地" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">ベトナム モク区 木通り123番地</a></div>
         <div>住所：<a href="https://www.google.com/maps/search/?api=1&query=abc通り+ハノイ市" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">abc通り、ハノイ市</a></div>
-        <div>電話: 0909 123 456</div>
-      `,
+        <div>電話: 0909 123 456</div>`
+      ,
       vn: `
         <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=123+Đường+Gỗ,+Quận+Mộc,+Việt+Nam" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">123 Đường Gỗ, Quận Mộc, Việt Nam</a></div>
         <div>Địa chỉ: <a href="https://www.google.com/maps/search/?api=1&query=Đường+abc,+Thành+phố+Hà+Nội" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration: underline;">Đường abc, Thành phố Hà Nội</a></div>
-        <div>Điện thoại: 0909 123 456</div>
-      `
+        <div>Điện thoại: 0909 123 456</div>`
     };
+
     const logoText = {
       jp: "木工場ファミリー",
       vn: "Đồ gỗ MiDo"
     };
+
     const menuText = {
       jp: ["ホーム", "会社概要", "製品紹介", "お問い合わせ"],
       vn: ["Trang Chủ", "Giới Thiệu", "Sản Phẩm", "Liên Hệ"]
     };
+
     const copyrightText = {
       jp: "© 2025 木工場ファミリー All Rights Reserved.",
       vn: "© 2025 Gia Đình Xưởng Gỗ Bản Quyền Đã Được Bảo Lưu."
     };
+
     function changeLang(lang) {
       if(lang === 'jp') {
         document.getElementById('jp').classList.add('active');
@@ -278,11 +478,8 @@
       });
       document.getElementById('footer-copyright').textContent = copyrightText[lang];
     }
-    window.onload = () => {
-      const defaultLang = 'jp';
-      document.getElementById('languageSelect').value = defaultLang;
-      changeLang(defaultLang);
-    };
-  </script>
+    changeLang(lang);
+  };
+</script>
 </body>
 </html>
