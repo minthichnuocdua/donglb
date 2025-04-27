@@ -152,10 +152,6 @@
             background-color: #e9e9e9;
             font-weight: bold;
         }
-
-        .show-dropdown {
-            display: block;
-        }
         
         /* Top Hero Section */
         .top_hero {
@@ -654,12 +650,12 @@
                 <li><a href="/value">日本企業の紹介</a></li>
             </ul>
             <div class="language_select">
-    <button class="language-button" id="language-dropdown-btn">LANGUAGE ▼</button>
-    <div class="language-dropdown-content" id="language-dropdown">
-        <a href="index.html">Tiếng Việt</a>
-        <a href="jp.html" class="active">日本語</a>
-    </div>
-</div>
+                <button class="language-button" id="language-dropdown-btn">LANGUAGE ▼</button>
+                <div class="language-dropdown-content" id="language-dropdown">
+                    <a href="index.html">Tiếng Việt</a>
+                    <a href="jp.html" class="active">日本語</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -724,7 +720,7 @@
 
             <div class="exhibition_item">
                 <div class="exhibition_title">成田国際空港</div>
-<div class="exhibition_date">2024年12月9日～2024年12月22日</div>
+                <div class="exhibition_date">2024年12月9日～2024年12月22日</div>
                 <div class="exhibition_place">開催場所：南ビジターサービスセンター - 第1ターミナル1階</div>
             </div>
 
@@ -930,31 +926,30 @@
 
     <script>
         // Swiper initialization
-        const swiper1 = new Swiper(".swiper-mv", {
-            loop: true,
-            speed: 800,
-            autoplay: {
-                delay: 4500
-            },
-            slidesPerView: 1,
-            spaceBetween: 0,
-            effect: "fade",
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            }
-        });
-        
-        // Back to top functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Hero slider initialization
+            const heroSwiper = new Swiper('.hero-swiper', {
+                speed: 800,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: "fade",
+                fadeEffect: {
+                    crossFade: true
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                }
+            });
+            
+            // Back to top functionality
             const toTopButton = document.querySelector('.to_top');
             
             window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
+                if(window.pageYOffset > 300) {
                     toTopButton.style.display = 'flex';
                 } else {
                     toTopButton.style.display = 'none';
@@ -973,69 +968,24 @@
             const langDropdown = document.getElementById('language-dropdown');
             
             if (langButton && langDropdown) {
-                // Toggle dropdown when clicking the button
+                // ボタンをクリックしたときドロップダウンを表示
                 langButton.addEventListener('click', function(e) {
+                    e.preventDefault();
                     e.stopPropagation();
-                    langDropdown.classList.toggle('show-dropdown');
+                    langDropdown.style.display = langDropdown.style.display === 'block' ? 'none' : 'block';
                 });
                 
-                // Close dropdown when clicking elsewhere
+                // 外側をクリックしたときドロップダウンを閉じる
                 document.addEventListener('click', function() {
-                    if (langDropdown.classList.contains('show-dropdown')) {
-                        langDropdown.classList.remove('show-dropdown');
-                    }
+                    langDropdown.style.display = 'none';
                 });
                 
-                // Prevent dropdown from closing when clicking inside it
+                // ドロップダウン内をクリックしたとき閉じないようにする
                 langDropdown.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
-            
-            // Hero slider initialization
-            const heroSwiper = new Swiper('.hero-swiper', {
-                speed: 800,
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                effect: "fade",
-                fadeEffect: {
-                    crossFade: true
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                }
-            });
         });
     </script>
-<script>
-    // 言語ドロップダウンの処理
-    document.addEventListener('DOMContentLoaded', function() {
-        const langButton = document.getElementById('language-dropdown-btn');
-        const langDropdown = document.getElementById('language-dropdown');
-        
-        if (langButton && langDropdown) {
-            // ボタンをクリックしたときドロップダウンを表示
-            langButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                langDropdown.style.display = langDropdown.style.display === 'block' ? 'none' : 'block';
-            });
-            
-            // 外側をクリックしたときドロップダウンを閉じる
-            document.addEventListener('click', function() {
-                langDropdown.style.display = 'none';
-            });
-            
-            // ドロップダウン内をクリックしたとき閉じないようにする
-            langDropdown.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-        }
-    });
-</script>
 </body>
 </html>
