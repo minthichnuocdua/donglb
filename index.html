@@ -1018,5 +1018,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
+<script>
+    // Xử lý hiển thị dropdown ngôn ngữ
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButton = document.getElementById('language-dropdown-btn');
+        const langDropdown = document.getElementById('language-dropdown');
+        
+        if (langButton && langDropdown) {
+            // Mở dropdown khi click vào nút
+            langButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                langDropdown.style.display = langDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // Đóng dropdown khi click ra ngoài
+            document.addEventListener('click', function() {
+                langDropdown.style.display = 'none';
+            });
+            
+            // Ngăn không cho dropdown đóng khi click vào nó
+            langDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    });
+</script>
 </body>
 </html>
