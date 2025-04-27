@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>優れた日本の木材 日本の高付加価値木材の魅力</title>
+    <meta property="og:title" content="優れた日本の木材 日本の高付加価値木材の魅力">
+    <meta property="og:image" content="https://excellent-japanese-wood.com/assets/img/og_img.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://excellent-japanese-wood.com/assets/img/og_img.png">
+    <meta name="description" content="日本の国土の3分の2は森林であり、木材は昔から日常生活で使用されてきました。日本は「木の文化」が根付いた国であり、世界最古の木造建築物が今も日本に残っていることがその証拠です。">
+    <meta property="og:description" content="日本の国土の3分の2は森林であり、木材は昔から日常生活で使用されてきました。日本は「木の文化」が根付いた国であり、世界最古の木造建築物が今も日本に残っていることがその証拠です。">
+    <meta name="twitter:description" content="日本の国土の3分の2は森林であり、木材は昔から日常生活で使用されてきました。日本は「木の文化」が根付いた国であり、世界最古の木造建築物が今も日本に残っていることがその証拠です。">
+    <meta name="keywords" content="林製材,日本の木材,日本の木材技術">
+    <link rel="icon" href="https://excellent-japanese-wood.com/assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="https://excellent-japanese-wood.com/assets/img/apple-touch-icon.png">
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans+Thai&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/language/language.css">
+    
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+    <style>
+        /* Core Styles */
+        :root {
+            --main-color: #7d5a36;
+            --accent-color: #d1b594;
+            --dark-color: #3e3e3e;
+            --light-color: #faf7f1;
+            --orange-color: #ff9933;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
+            color: var(--dark-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            position: relative;
+            z-index: 100;
+            background-color: white;
+        }
+        
+        .logo_wrap {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .logo_wrap img {
+            height: 40px;
+        }
+        
+        .nav_area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav_area ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav_area li {
+            margin: 0 15px;
+        }
+        
+        .nav_area a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 0;
+            display: block;
+        }
+        
+        .language-button {
+            background-color: black;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        /* Language Dropdown Styles */
+        .language_select {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-button {
+            background-color: black;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .language-dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1050;
+        }
+
+        .language-dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .language-dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .language-dropdown-content a.active {
+            background-color: #e9e9e9;
+            font-weight: bold;
+        }
+
+        .show-dropdown {
+            display: block;
+        }
+        
+        /* Top Hero Section */
+        .top_hero {
+            position: relative;
+            height: 680px;
+            overflow: hidden;
+        }
+        
+        .top_hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero_content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 80%;
+        }
+        
+        .hero_content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero_content h2 {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-top: 10px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        /* Section Styles */
+        .section_container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .section_subtitle {
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        /* Japan Wood & Craftsmanship Section */
+        .japan_wood_section {
+            margin: 40px auto;
+            max-width: 900px;
+            padding: 30px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        
+        .japan_wood_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .japan_wood_content {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .exhibition_item {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .exhibition_title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .exhibition_date {
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        
+        .exhibition_place {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Wooden Building Section */
+        .wooden_building {
+            display: flex;
+            align-items: center;
+            margin: 60px auto;
+            max-width: 1100px;
+        }
+        
+        .wooden_building_image {
+            flex: 0 0 40%;
+        }
+        
+        .wooden_building_image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .wooden_building_content {
+            flex: 0 0 60%;
+            padding: 0 40px;
+        }
+        
+        .wooden_building_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: var(--main-color);
+        }
+        
+        .wooden_building_text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        /* Movie Section */
+        .movie_section {
+            background-image: url(https://images.unsplash.com/photo-1569185835836-a9683f3c72a4?q=80&w=1600&auto=format&fit=crop);
+            background-size: cover;
+            background-position: center;
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .movie_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .movie_subtitle {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .movie_container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .video_player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: black;
+        }
+        
+        .video_btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Wood Processing Technology */
+        .technology_section {
+            padding: 60px 20px;
+        }
+        
+        .technology_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .technology_subtitle {
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .technology_item {
+            display: flex;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .technology_image {
+            flex: 0 0 50%;
+        }
+        
+        .technology_image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .technology_content {
+            flex: 0 0 50%;
+            padding: 0 30px;
+        }
+        
+        .technology_item_number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--orange-color);
+            margin-bottom: 15px;
+        }
+        
+        .technology_item_title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .technology_item_text {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .read_more {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 30px;
+            background-color: var(--orange-color);
+            color: white;
+            text-decoration: none;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        
+        .read_more:hover {
+            background-color: #e67300;
+        }
+        
+        .read_more::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid white;
+            border-right: 2px solid white;
+            transform: rotate(45deg);
+        }
+        
+        /* Digital Pamphlet */
+        .digital_pamphlet {
+            text-align: center;
+            margin: 60px auto;
+            max-width: 1100px;
+            padding: 40px 20px;
+            background-image: url(https://images.unsplash.com/photo-1562313544-8f89bf1f4a49?q=80&w=1600&auto=format&fit=crop);
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .pamphlet_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .pamphlet_subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        /* Column Section */
+        .column_section {
+            padding: 60px 20px;
+            background-color: var(--light-color);
+        }
+        
+        .column_title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--main-color);
+        }
+        
+        .column_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .column_item {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .column_image {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .column_content {
+            padding: 15px;
+        }
+        
+        .column_item_title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #533059;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .footer_logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer_logo img {
+            height: 40px;
+        }
+        
+        .footer_nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer_nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.85rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* To Top Button */
+        .to_top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        .to_top::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-top: 3px solid white;
+            border-right: 3px solid white;
+            transform: rotate(-45deg);
+            margin-top: 5px;
+        }
+        
+        /* Style cho Slider Hero */
+        .hero-slider-container {
+            position: relative;
+            width: 100%;
+            height: 680px;
+            overflow: hidden;
+        }
+
+        .hero-swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-swiper .swiper-slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-swiper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            width: 80%;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        /* Stye cho dấu chấm pagination */
+        .swiper-pagination {
+            position: absolute;
+            bottom: 20px !important;
+            width: 100%;
+            text-align: right;
+            padding-right: 30px;
+            box-sizing: border-box;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px !important;
+            height: 12px !important;
+            background: rgba(255, 255, 255, 0.7) !important;
+            opacity: 1 !important;
+            margin: 0 5px !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #ff3b30 !important; /* Chấm hiện tại màu đỏ */
+        }
+    </style>
+</head>
+
+<body id="page_top" class="lang_jp language">
+    <header>
+        <div class="logo_wrap">
+            <a href="/">
+                <img src="https://excellent-japanese-wood.com/assets/img/logo.png" alt="M&D WOODCRAFT" />
+            </a>
+        </div>
+        <div class="nav_area">
+            <ul>
+                <li><a href="/">日本の木材</a></li>
+                <li><a href="/technique">日本の木材技術</a></li>
+                <li><a href="/video">木材の動画</a></li>
+                <li><a href="/history">木材技術の歴史</a></li>
+                <li><a href="/value">日本企業の紹介</a></li>
+            </ul>
+            <div class="language_select">
+                <button class="language-button" id="language-dropdown-btn">LANGUAGE ▼</button>
+                <div class="language-dropdown-content" id="language-dropdown">
+                    <a href="index.html" data-lang="vi">Tiếng Việt</a>
+                    <a href="jp.html" class="active" data-lang="jp">日本語</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav_hamburger"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="hero-slider-container">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1: 日本の森林 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1545569731-20de6aa69892?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80" alt="日本の森林">
+                        <div class="hero-text">
+                            <h1>Excellent<br>Japanese Wood</h1>
+                            <p>日本の高付加価値木材の魅力</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2: 日本の大きな木 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80" alt="日本の大きな木">
+                        <div class="hero-text">
+                            <h1>Excellent<br>Japanese Wood</h1>
+                            <p>日本の高付加価値木材の魅力</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3: 日本の木製品 -->
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1545296664-39669e4c0538?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=680&q=80" alt="日本の木製品">
+                        <div class="hero-text">
+                            <h1>Excellent<br>Japanese Wood</h1>
+                            <p>日本の高付加価値木材の魅力</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination - 下部のドット -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!-- Japan Wood & Craftsmanship Section -->
+        <section class="japan_wood_section">
+            <h2 class="japan_wood_title">Japan Wood × Craftsmanship</h2>
+            <div class="japan_wood_content">
+                日本の特別な木材展示会が東京、大阪、北海道、愛知の国際エリアで開催されます。職人による「技」と「匠の技」を通じて、日本の高度な木材技術、「木組み」フレーム技術、国宝級の技術、漆工芸、手彫り筆、実用的な木工品などをご覧いただけます。木材に関する重要な展示品や技術を体験することができます。
+            </div>
+
+            <div class="exhibition_item">
+                <div class="exhibition_title">東京国際空港</div>
+                <div class="exhibition_date">2024年10月21日～2024年11月3日</div>
+                <div class="exhibition_place">開催場所：羽田ウィング5ホール 第3段階</div>
+            </div>
+
+            <div class="exhibition_item">
+                <div class="exhibition_title">関西国際空港</div>
+                <div class="exhibition_date">2024年11月18日～2024年12月1日</div>
+                <div class="exhibition_place">開催場所：ホンダ68関西ホール</div>
+            </div>
+
+            <div class="exhibition_item">
+                <div class="exhibition_title">成田国際空港</div>
+<div class="exhibition_date">2024年12月9日～2024年12月22日</div>
+                <div class="exhibition_place">開催場所：南ビジターサービスセンター - 第1ターミナル1階</div>
+            </div>
+
+            <div class="exhibition_item">
+                <div class="exhibition_title">新千歳国際空港</div>
+                <div class="exhibition_date">2025年1月10日～2025年1月23日</div>
+                <div class="exhibition_place">開催場所：センタープラザ - 2階・チャーターフライトセンター</div>
+            </div>
+
+            <div class="exhibition_item">
+                <div class="exhibition_title">中部国際空港セントレア</div>
+                <div class="exhibition_date">2025年2月1日～2025年2月14日</div>
+                <div class="exhibition_place">開催場所：ルーフデッキ - 国際線ターミナル</div>
+            </div>
+        </section>
+
+        <!-- The oldest wooden building -->
+        <section class="wooden_building">
+            <div class="wooden_building_image">
+                <img src="https://images.unsplash.com/photo-1614566666325-841465874072?q=80&w=600&auto=format&fit=crop" alt="日本の古代寺院">
+            </div>
+            <div class="wooden_building_content">
+                <h2 class="wooden_building_title">The oldest<br>wooden building<br>in the world</h2>
+                <div class="wooden_building_text">
+                    日本の国土の3分の2は森林であり、木材は昔から日常生活で使用されてきました。日本は「木の文化」が根付いた国であり、世界最古の木造建築物が今も日本に残っていることがその証拠です。
+                    <br><br>
+                    私たちは、日本の繊細な木製品と革新的な木材加工技術、そして日本が誇る持続可能な「木の文化」をご紹介します。これらは日本の高付加価値木材製品として、特殊な技術や木材保存方法などを通して価値を高めています。
+                </div>
+            </div>
+        </section>
+
+        <!-- Movie Section -->
+        <section class="movie_section">
+            <div class="section_container">
+                <h2 class="movie_title">Movie</h2>
+                <p class="movie_subtitle">日本の高付加価値木材の魅力を動画でご紹介します</p>
+                
+                <div class="movie_container">
+                    <div class="video_player">
+                        <img src="https://images.unsplash.com/photo-1575669546728-5275584a1f8d?q=80&w=800&auto=format&fit=crop" alt="動画サムネイル" style="width:100%; height:100%; object-fit:cover;">
+                        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
+                            <img src="https://excellent-japanese-wood.com/assets/img/play.png" alt="再生ボタン" style="width:60px; height:60px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="video_btn">動画リストをご覧ください</a>
+            </div>
+        </section>
+
+        <!-- Wood Processing Technology -->
+        <section class="technology_section">
+            <div class="section_container">
+                <h2 class="technology_title">Wood processing technology</h2>
+                <p class="technology_subtitle">日本の誇る木材加工技術</p>
+                
+                <div class="technology_item">
+                    <div class="technology_image">
+                        <img src="https://images.unsplash.com/photo-1569185835836-a9683f3c72a4?q=80&w=600&auto=format&fit=crop" alt="日本の森林">
+                    </div>
+                    <div class="technology_content">
+                        <div class="technology_item_number">01</div>
+                        <h3 class="technology_item_title">日本の木材</h3>
+                        <div class="technology_item_text">
+                            日本は国土の68%が森林で覆われている世界有数の森林国です。また、世界最古の木造建築物が日本に現存しています。日本には木材に関連する世界的な特産品があり、独自の特性を持っています。
+                        </div>
+                        <a href="#" class="read_more">詳細を見る</a>
+                    </div>
+                </div>
+                
+                <div class="technology_item">
+                    <div class="technology_content">
+                        <div class="technology_item_number">02</div>
+                        <h3 class="technology_item_title">日本の木材技術</h3>
+                        <div class="technology_item_text">
+                            昔から地震の多い日本では、1,400年以上も持続する優れた木造建築を生み出してきました。日本の建築物は「木組み」技術で有名です。私たちは、その独特の技術や自然の特性を活かした方法、防腐・防虫技術などをご紹介します。
+                        </div>
+                        <a href="#" class="read_more">詳細を見る</a>
+                    </div>
+                    <div class="technology_image">
+                        <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?q=80&w=600&auto=format&fit=crop" alt="日本の木工職人">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Digital Pamphlet Section -->
+            <div class="digital_pamphlet">
+                <div class="digital_pamphlet_inner">
+                    <div class="pamphlet_icon">
+                        <img src="assets/img/book-icon.svg" alt="本のアイコン" width="50">
+                    </div>
+                    <h3 class="pamphlet_title">デジタル技術資料</h3>
+                    <p class="pamphlet_subtitle">DIGITAL PAMPHLET</p>
+                    <a href="#" class="pamphlet_link"></a>
+                </div>
+            </div>
+
+            <!-- Column Section -->
+            <div class="column_section">
+                <div class="section_container">
+                    <h2 class="column_title">Column</h2>
+                    
+                    <div class="column_grid">
+                        <!-- Column Item 1 -->
+                        <div class="column_item">
+                            <div class="column_image">
+                                <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="富士山">
+                            </div>
+                            <div class="column_content">
+                                <h3 class="column_item_title">序章：日本の国土と木の文化</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Column Item 2 -->
+                        <div class="column_item">
+                            <div class="column_image">
+                                <img src="https://images.unsplash.com/photo-1578983559217-228a89e95e3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="雪の中の家">
+                            </div>
+                            <div class="column_content">
+                                <h3 class="column_item_title">過酷な気候と地震に耐える日本の木造住宅</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Column Item 3 -->
+                        <div class="column_item">
+                            <div class="column_image">
+                                <img src="https://images.unsplash.com/photo-1504280317859-8d2bb308fbfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="木目のテクスチャ">
+                            </div>
+                            <div class="column_content">
+                                <h3 class="column_item_title">日本の樹木と木材の特徴</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Column Item 4 -->
+                        <div class="column_item">
+                            <div class="column_image">
+                                <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="日本の部屋">
+                            </div>
+                            <div class="column_content">
+                                <h3 class="column_item_title">日本の住宅と木製家具の特徴について</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Column Item 5 -->
+                        <div class="column_item">
+                            <div class="column_image">
+                                <img src="https://images.unsplash.com/photo-1599707367442-47300f472658?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="木工ワークショップ">
+                            </div>
+                            <div class="column_content">
+                                <h3 class="column_item_title">日本の木材の耐久性、耐火性、耐震性、防虫・防腐技術</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Column Item 6 -->
+                        <div class="column_item">
+                            <div class="column_image">
+                                <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="日本の職人">
+                            </div>
+                            <div class="column_content">
+                                <h3 class="column_item_title">日本の伝統的な木材加工技術</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Column Item 7 -->
+                        <div class="column_item">
+                            <div class="column_image">
+                                <img src="https://images.unsplash.com/photo-1566895291281-ea63efd4a19a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="現代の木工">
+                            </div>
+                            <div class="column_content">
+                                <h3 class="column_item_title">日本の現代木材加工技術</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to top button -->
+    <div class="to_top" style="display: none;"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="content_wrap_inner">
+            <div class="footer_logo">
+                <a href="/">
+                    <img src="https://excellent-japanese-wood.com/assets/img/logo-footer.png" alt="JAPANESE FOREST" />
+                </a>
+            </div>
+            
+            <div class="footer_nav">
+                <a href="/">日本の木材</a>
+                <a href="/technique">日本の木材技術</a>
+                <a href="/digital">デジタル技術資料</a>
+                <a href="/video">木材の動画</a>
+                <a href="/company">日本企業の紹介</a>
+                <a href="/sitemap">サイトマップ</a>
+            </div>
+            
+            <p class="copyright">© Excellent Japanese Wood.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Swiper initialization
+        const swiper1 = new Swiper(".swiper-mv", {
+            loop: true,
+            speed: 800,
+            autoplay: {
+                delay: 4500
+            },
+            slidesPerView: 1,
+            spaceBetween: 0,
+            effect: "fade",
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            }
+        });
+        
+        // Back to top functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toTopButton = document.querySelector('.to_top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    toTopButton.style.display = 'flex';
+                } else {
+                    toTopButton.style.display = 'none';
+                }
+            });
+            
+            toTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Language dropdown functionality
+            const langButton = document.getElementById('language-dropdown-btn');
+            const langDropdown = document.getElementById('language-dropdown');
+            
+            if (langButton && langDropdown) {
+                // Toggle dropdown when clicking the button
+                langButton.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('show-dropdown');
+                });
+                
+                // Close dropdown when clicking elsewhere
+                document.addEventListener('click', function() {
+                    if (langDropdown.classList.contains('show-dropdown')) {
+                        langDropdown.classList.remove('show-dropdown');
+                    }
+                });
+                
+                // Prevent dropdown from closing when clicking inside it
+                langDropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+            
+            // Hero slider initialization
+            const heroSwiper = new Swiper('.hero-swiper', {
+                speed: 800,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                effect: "fade",
+                fadeEffect: {
+                    crossFade: true
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>
