@@ -1011,5 +1011,31 @@
             });
         });
     </script>
+<script>
+    // 言語ドロップダウンの処理
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButton = document.getElementById('language-dropdown-btn');
+        const langDropdown = document.getElementById('language-dropdown');
+        
+        if (langButton && langDropdown) {
+            // ボタンをクリックしたときドロップダウンを表示
+            langButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                langDropdown.style.display = langDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            // 外側をクリックしたときドロップダウンを閉じる
+            document.addEventListener('click', function() {
+                langDropdown.style.display = 'none';
+            });
+            
+            // ドロップダウン内をクリックしたとき閉じないようにする
+            langDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    });
+</script>
 </body>
 </html>
