@@ -654,12 +654,12 @@
                 <li><a href="/value">日本企業の紹介</a></li>
             </ul>
             <div class="language_select">
-                <button class="language-button" id="language-dropdown-btn">LANGUAGE ▼</button>
-                <div class="language-dropdown-content" id="language-dropdown">
-                    <a href="index.html" data-lang="vi">Tiếng Việt</a>
-                    <a href="jp.html" class="active" data-lang="jp">日本語</a>
-                </div>
-            </div>
+    <button class="language-button" id="language-dropdown-btn">LANGUAGE ▼</button>
+    <div class="language-dropdown-content" id="language-dropdown">
+        <a href="index.html">Tiếng Việt</a>
+        <a href="jp.html" class="active">日本語</a>
+    </div>
+</div>
         </div>
     </header>
 
